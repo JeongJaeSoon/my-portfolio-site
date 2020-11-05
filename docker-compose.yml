@@ -1,0 +1,68 @@
+version: "3"
+
+networks:
+  laravel:
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - "8888:80"
+    volumes:
+      - ./src/server:/var/www/html:z
+      - ./nginx/server/nginx.conf:/etc/nginx/conf.d/default.conf:z
+    environment:
+      TZ: "Asia/Seoul"
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - laravel
+
+  mysql:
+    image: mysql:5.7.26
+    container_name: mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "4306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql:z
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel_soon
+      MYSQL_PASSWORD: soon_941006
+      MYSQL_ROOT_PASSWORD: soon_941006
+      # SERVICE_TAGS: dev
+      SERVICE_TAGS: service
+      SERVICE_NAME: mysql
+      TZ: "Asia/Seoul"
+    networks:
+      - laravel
+
+  php:
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/server/Dockerfile
+    container_name: php
+    volumes:
+      - ./src/server:/var/www/html:z
+    environment:
+      TZ: "Asia/Seoul"
+    ports:
+      - "9000:9000"
+    networks:
+      - laravel
+
+  react:
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/web/Dockerfile
+    container_name: react
+    environment:
+      TZ: "Asia/Seoul"
+    ports:
+      - "3000:80"
+    networks:
+      - laravel
