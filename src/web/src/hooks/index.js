@@ -1,3 +1,4 @@
 import useClick from "./useClick";
+import useAxios from "./useAxios";
 
-export { useClick };
+export { useClick, useAxios };

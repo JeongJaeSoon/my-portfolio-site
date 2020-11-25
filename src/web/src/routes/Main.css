@@ -18,11 +18,12 @@
   letter-spacing: -6.5px;
   color: #6b91fd;
 }
+
 /* PC */
 @media (min-width: 768px) {
   .main {
     width: 1200px;
-    margin: 100px auto;
+    margin: 0 auto;
   }
 
   .main .profile-img {
@@ -37,7 +38,7 @@
 /* 모바일 */
 @media (max-width: 768px) {
   .main {
-    margin: 30px auto;
+    margin: 0 auto;
   }
 
   .main .profile-img {

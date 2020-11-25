@@ -22,6 +22,10 @@
 
 /* PC */
 @media (min-width: 768px) {
+  .nav {
+    margin-bottom: 80px;
+  }
+
   .nav .wrapper {
     width: 1200px;
     position: relative;
@@ -33,7 +37,6 @@
     display: inline-block;
     width: 200px;
     height: 90px;
-    border-bottom: 2px solid #6b91fd;
   }
 
   .nav .nav-menu :hover {
@@ -63,6 +66,10 @@
 
 /* 모바일 */
 @media (max-width: 768px) {
+  .nav {
+    margin-bottom: 10vh;
+  }
+
   .nav .wrapper {
     width: 100%;
   }
@@ -75,5 +82,9 @@
   .nav .btn {
     line-height: 40px;
     font-weight: 900;
+  }
+
+  .nav .selected a {
+    font-weight: 550;
   }
 }

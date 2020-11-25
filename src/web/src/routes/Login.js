@@ -1,7 +1,7 @@
 import React from "react";
 
 const Login = () => {
-  return <>Login 입니다.</>;
+  return <div className="login">Login 입니다.</div>;
 };
 
 export default Login;
