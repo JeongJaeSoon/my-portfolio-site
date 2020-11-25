@@ -1,0 +1,28 @@
+.footer {
+  margin: 0 auto;
+}
+
+.footer p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 320;
+}
+
+/* PC */
+@media (min-width: 768px) {
+  .footer {
+    width: 1200px;
+    margin-top: 80px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .footer {
+    width: 100%;
+    margin-top: 10vh;
+  }
+
+  .footer p {
+    font-size: 12px;
+  }
+}

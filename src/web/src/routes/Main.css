@@ -1,0 +1,55 @@
+.main .profile-img {
+  background: url("../img/profileImg-test.jpg") no-repeat center/400px;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.16);
+  border: solid 20px #c7d6ff;
+  border-radius: 100%;
+}
+
+.main .profile-name {
+  width: 100%;
+  margin: 0 auto;
+  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.16);
+  font-family: "Roboto", sans-serif;
+  font-size: 130px;
+  font-weight: 700;
+  letter-spacing: -6.5px;
+  color: #6b91fd;
+}
+
+/* PC */
+@media (min-width: 768px) {
+  .main {
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  .main .profile-img {
+    margin-bottom: 100px;
+  }
+
+  .main .profile-name {
+    line-height: 150px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .main {
+    margin: 0 auto;
+  }
+
+  .main .profile-img {
+    width: 230px;
+    height: 230px;
+    border-width: 10px;
+    background-size: 230px;
+  }
+
+  .main .profile-name {
+    line-height: 100px;
+    font-size: 40px;
+  }
+}

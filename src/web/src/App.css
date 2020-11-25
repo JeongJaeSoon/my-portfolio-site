@@ -1,3 +1,30 @@
+.body {
+  height: 120vh;
+}
+
 .App {
   text-align: center;
+}
+.section {
+  width: 100%;
+}
+
+.section > div {
+  /* height: inherit; */
+  border: 1px solid red;
+  margin: 0 auto;
+}
+
+/* PC */
+@media (min-width: 768px) {
+  .section > div {
+    width: 1200px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .section > div {
+    width: 100%;
+  }
 }
