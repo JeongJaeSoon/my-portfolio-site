@@ -1,0 +1,79 @@
+.nav {
+  background-color: #6b91fd;
+  margin-bottom: 10px;
+}
+
+.nav .nav-menu a,
+.nav .btn {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #b0c5ff;
+}
+
+.nav .selected a {
+  color: white;
+}
+
+.nav .btn {
+  background-color: #ffffff;
+  color: #6b91fd;
+  display: block;
+}
+
+/* PC */
+@media (min-width: 768px) {
+  .nav .wrapper {
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .nav .nav-menu {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 200px;
+    height: 90px;
+    border-bottom: 2px solid #6b91fd;
+  }
+
+  .nav .nav-menu :hover {
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff;
+  }
+
+  .nav .nav-menu a {
+    line-height: 90px;
+    font-size: 30px;
+  }
+
+  .nav .btn {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 18px;
+    width: 130px;
+    line-height: 50px;
+    border-radius: 100px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .nav .wrapper {
+    width: 100%;
+  }
+
+  .nav .nav-menu {
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .nav .btn {
+    line-height: 40px;
+    font-weight: 900;
+  }
+}

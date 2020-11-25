@@ -1,3 +1,17 @@
 .App {
   text-align: center;
 }
+.section {
+  width: 100%;
+}
+
+.body {
+  position: relative;
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 5vh;
+}
