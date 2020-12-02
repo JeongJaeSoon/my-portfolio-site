@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use App\User;
+use Auth;
 use Validator;
 use Hash;
 
@@ -56,7 +57,7 @@ class ApiAuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
         ]);
 
         if ($validator->fails()) {
@@ -81,13 +82,13 @@ class ApiAuthController extends Controller
             // 잘못된 password
             return response([
                 "message" => "패스워드가 일치하지 않습니다."
-            ], 422);
+            ], 401);
         }
 
         // 유저 정보 없을 경우
         return response([
             "message" => '존재하지 않는 사용자입니다.'
-        ], 422);
+        ], 401);
     }
 
     /**
@@ -103,5 +104,15 @@ class ApiAuthController extends Controller
         return response([
             'message' => '로그아웃에 성공하였습니다.'
         ], 200);
+    }
+
+    public function auth()
+    {
+        if (Auth::guard('api')->check()) {
+            return response([
+                'message' => '인증에 성공하였습니다.',
+                'isAuth' => true
+            ], 200);
+        }
     }
 }
