@@ -61,7 +61,6 @@
 .login .left .password input:focus {
   box-shadow: 0 0 10px 0 #6b91fd;
   border: 1px solid #6b91fd;
-  border: none;
   transition: 0.7s;
 }
 
@@ -150,6 +149,10 @@
     line-height: 18px;
   }
 
+  .login .left .id input:focus,
+  .login .left .password input:focus {
+    border: none;
+  }
   .login .left .fas {
     left: 183px;
     font-size: 25px;
