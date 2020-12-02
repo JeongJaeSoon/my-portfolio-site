@@ -1,22 +1,22 @@
 import React from "react";
-import Auth from "./Auth";
+import { LogoutRequest, AuthRequest } from "../axios";
 import { Link, useLocation } from "react-router-dom";
 import "./Navigation.css";
 
 const Navigation = () => {
   const pathname = useLocation().pathname.split("/")[1];
+  const isLogin = AuthRequest();
+
   const name = pathname === "" ? "main" : pathname;
+  const selectedClassName = " selected";
   const selectedMenu = {
     main: false,
     project: false,
     stack: false,
     about: false,
   };
-  const selectedClassName = " selected";
-
   selectedMenu[name] = true;
   const { main, project, stack, about } = selectedMenu;
-  const isLogin = Auth();
 
   return (
     <div className="nav">
@@ -37,9 +37,9 @@ const Navigation = () => {
 
           {/* TODO 로그인 여부에 따라서 로그아웃, 로그인 */}
           {isLogin ? (
-            <Link to="/logout" className="btn">
+            <button className="btn" onClick={LogoutRequest}>
               LOGOUT
-            </Link>
+            </button>
           ) : (
             <Link to="/login" className="btn">
               LOGIN

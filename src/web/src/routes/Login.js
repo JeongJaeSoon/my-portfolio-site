@@ -1,10 +1,8 @@
 import React from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { useInput } from "../hooks";
+import { LoginRequest } from "../axios";
 import "./Login.css";
-
-const loginURL = "http://laravel.test/api/login";
 
 const Login = ({ history }) => {
   // TODO
@@ -17,37 +15,7 @@ const Login = ({ history }) => {
         alert("비밀번호는 최소 6자리 이상입니다.");
         return;
       }
-      axios({
-        method: "post",
-        url: loginURL,
-        data: {
-          email: id.value,
-          password: password.value,
-        },
-      })
-        .then((data) => {
-          const { message, token } = data.data;
-          alert(message);
-          localStorage.setItem("token", token);
-          window.location.replace("/");
-        })
-        .catch((error) => {
-          if (error.response) {
-            const {
-              status,
-              data: { message },
-            } = error.response;
-
-            return status === 401
-              ? alert(message)
-              : status === 422
-              ? alert("잘못된 로그인 정보입니다.")
-              : "";
-          }
-          alert("로그인에 실패하였습니다.");
-          history.push("/");
-          return;
-        });
+      LoginRequest({ email: id.value, password: password.value, history });
     }
 
     return id.value === ""
@@ -56,6 +24,7 @@ const Login = ({ history }) => {
       ? alert("비밀번호를 입력해 주세요")
       : "";
   };
+
   return (
     <div className="login">
       <div className="left">

@@ -7,6 +7,11 @@ const useAuth = (opts, token) => {
     error: null,
     data: null,
   });
+  const authAxios = defaultAxios.create({
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
 
   const refetch = () => {
     setstate({
@@ -15,11 +20,6 @@ const useAuth = (opts, token) => {
     });
   };
 
-  const authAxios = defaultAxios.create({
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
   useEffect(() => {
     if (!opts.url) {
       return;

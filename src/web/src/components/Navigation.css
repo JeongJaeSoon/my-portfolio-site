@@ -18,6 +18,8 @@
   background-color: #ffffff;
   color: #6b91fd;
   display: block;
+  outline: none;
+  border: none;
 }
 
 /* PC */
