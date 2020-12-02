@@ -4,8 +4,6 @@ import { Navigation, Footer } from "./components";
 import { Main, Login, Project, Stack, About } from "./routes";
 
 const App = () => {
-  localStorage.setItem("isLogin", true);
-  localStorage.removeItem("isLogin");
   return (
     <div className="App">
       <BrowserRouter className="section">
