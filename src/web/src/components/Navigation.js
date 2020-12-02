@@ -1,4 +1,5 @@
 import React from "react";
+import Auth from "./Auth";
 import { Link, useLocation } from "react-router-dom";
 import "./Navigation.css";
 
@@ -15,8 +16,7 @@ const Navigation = () => {
 
   selectedMenu[name] = true;
   const { main, project, stack, about } = selectedMenu;
-
-  const isLogin = localStorage.getItem("isLogin");
+  const isLogin = Auth();
 
   return (
     <div className="nav">

@@ -7,8 +7,9 @@ import "./Login.css";
 const loginURL = "http://laravel.test/api/login";
 
 const Login = ({ history }) => {
-  const id = useInput("");
-  const password = useInput("");
+  // TODO
+  const id = useInput("wjdwotns1006@gmail.com");
+  const password = useInput("1541call");
 
   const onLoginHandler = () => {
     if (id.value && password.value) {
@@ -28,6 +29,7 @@ const Login = ({ history }) => {
           const { message, token } = data.data;
           alert(message);
           localStorage.setItem("token", token);
+          window.location.replace("/");
         })
         .catch((error) => {
           if (error.response) {
@@ -39,7 +41,7 @@ const Login = ({ history }) => {
             return status === 401
               ? alert(message)
               : status === 422
-              ? alert("입력값을 확인하세요.")
+              ? alert("잘못된 로그인 정보입니다.")
               : "";
           }
           alert("로그인에 실패하였습니다.");

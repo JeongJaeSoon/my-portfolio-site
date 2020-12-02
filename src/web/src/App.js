@@ -1,15 +1,11 @@
 import "./App.css";
-import Auth from "./components/Auth";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { Navigation, Footer } from "./components";
 import { Main, Login, Project, Stack, About } from "./routes";
 
 const App = () => {
-  localStorage.setItem("isLogin", true);
-  localStorage.removeItem("isLogin");
   return (
     <div className="App">
-      <Auth />
       <BrowserRouter className="section">
         <div className="header">
           <Navigation />
