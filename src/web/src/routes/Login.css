@@ -1,0 +1,223 @@
+.section .login {
+  width: 1000px;
+  height: 600px;
+  border-radius: 30px;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.16);
+  position: relative;
+  text-align: center;
+}
+
+.login .left {
+  position: absolute;
+  left: 0;
+}
+
+.login .right {
+  position: absolute;
+  right: 0;
+  background-color: #6b91fd;
+  color: white;
+}
+
+.login .wrapper {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.login .left .title {
+  height: 70px;
+  font-family: Roboto, sans-serif;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.18;
+  color: #6b91fd;
+  margin-bottom: 80px;
+}
+
+.login .left input,
+.login .login-btn {
+  border-radius: 500px;
+  margin: 7px 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.login .left .id,
+.login .left .password {
+  position: relative;
+}
+
+.login .left .id input,
+.login .left .password input {
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  border: 1px solid #d5d5d5;
+}
+
+.login .left .id input:focus,
+.login .left .password input:focus {
+  box-shadow: 0 0 10px 0 #6b91fd;
+  border: 1px solid #6b91fd;
+  border: none;
+  transition: 0.7s;
+}
+
+.login .left .id input:focus + .fas,
+.login .left .password input:focus + .fas {
+  color: #6b91fd;
+  transition: 0.7s;
+}
+
+.login .left .fas {
+  position: absolute;
+  color: #d5d5d5;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.login .left a {
+  display: block;
+  font-family: Noto Sans, sans-serif;
+  color: #6b91fd;
+  margin: 5px;
+  font-size: 15px;
+}
+
+.login .login-btn {
+  background-color: #6b91fd;
+  color: white;
+}
+
+.login .login-btn:hover {
+  background-color: #5b84f5;
+  box-shadow: 3px 3px 5px 0 rgba(59, 105, 233, 0.5);
+  transition: 0.5s;
+}
+
+.login .right .title {
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  line-height: 1.18;
+}
+
+.login .right .content {
+  height: 94px;
+  font-family: Noto Sans, sans-serif;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.login .right .content p:nth-child(1),
+.login .right .content p:nth-child(2) {
+  font-size: 20px;
+}
+
+.login .right .content p:nth-child(4) {
+  font-size: 13px;
+}
+
+.login-btn {
+  cursor: pointer;
+}
+
+/* PC */
+@media (min-width: 768px) {
+  .login > div {
+    height: inherit;
+  }
+  .login .left {
+    width: 650px;
+  }
+
+  .login .left .title {
+    margin-bottom: 60px;
+  }
+
+  .login .left input,
+  .login .login-btn {
+    width: 330px;
+    height: 60px;
+  }
+
+  .login .left .id > input,
+  .login .left .password > input {
+    padding-left: 60px;
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  .login .left .fas {
+    left: 183px;
+    font-size: 25px;
+  }
+
+  .login .right {
+    width: 350px;
+    border-radius: 0 30px 30px 0;
+  }
+
+  .login .right .title {
+    height: 47px;
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+
+  .login .login-btn {
+    font-size: 20px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .section .login {
+    width: 90%;
+    margin: -50px auto;
+  }
+
+  .login .left {
+    bottom: 0;
+    height: 65%;
+    width: 100%;
+  }
+
+  .login .left .id > input,
+  .login .left .password > input {
+    padding-left: 12%;
+    font-size: 13px;
+  }
+
+  .login .left .title {
+    margin-bottom: 20px;
+  }
+
+  .login .left input,
+  .login .login-btn {
+    width: 70%;
+    height: 40px;
+  }
+
+  .login .left .fas {
+    left: 20%;
+  }
+
+  .login .right {
+    top: 0;
+    width: 100%;
+    height: 35%;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .login .right .title {
+    height: 40px;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .login .login-btn {
+    font-size: 15px;
+  }
+}
