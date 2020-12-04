@@ -83,27 +83,25 @@
 
 .project .view {
   width: 610px;
-  height: 100%;
   margin-left: 25px;
 }
 
-.project .view .head {
+.project .view .header {
   height: 80px;
 }
 
-.project .view .head > div {
+.project .view .header > div {
   box-sizing: border-box;
-  height: inherit;
-  padding: 15px;
+  padding: 20px 10px 0 25px;
   float: left;
 }
 
-.project .view .head .left {
+.project .view .header .left {
   width: 70%;
   text-align: left;
 }
 
-.project .view .head .left .title {
+.project .view .header .left .title {
   font-family: Roboto, sans-serif;
   font-size: 40px;
   font-weight: 700;
@@ -111,7 +109,7 @@
   color: #6b91fd;
 }
 
-.project .view .head .left .url {
+.project .view .header .left .url {
   font-family: Noto Sans, sans-serif;
   font-size: 13px;
   font-weight: 300;
@@ -119,11 +117,11 @@
   color: #213e3b;
 }
 
-.project .view .head .right {
+.project .view .header .right {
   width: 30%;
 }
 
-.project .view .head .right a {
+.project .view .header .right a {
   display: inline-block;
   width: 30%;
   font-family: Noto Sans, sans-serif;
@@ -151,7 +149,7 @@
 
 .project .view .section .info li .title {
   box-sizing: border-box;
-  width: 40%;
+  width: 20%;
   padding-right: 30px;
   font-family: Noto Sans, sans-serif;
   font-weight: 700;
@@ -160,7 +158,7 @@
 }
 
 .project .view .section .info li .value {
-  width: 60%;
+  width: 70%;
   font-weight: 300;
   text-align: left;
 }

@@ -8,13 +8,13 @@ const ProjectView = ({ projectId }) => {
     url: "https://github.com/JeongJaeSoon/Gochi-2019_Java-project",
     stack: ["JAVA", "GitHub"],
     date: "2019.00.00 ~ 2019.00.00",
-    role: "전체 메뉴 및 알고리즘 설계 / 구상",
+    role: "안녕하세요안녕하세요안녕하세요안녕하세요",
   };
   const isLogin = localStorage.getItem("token");
 
   return (
     <div className="view">
-      <div className="head">
+      <div className="header">
         <div className="left">
           <p className="title">{title}</p>
           <a target="_blank" rel="noreferrer" href={url} className="url">

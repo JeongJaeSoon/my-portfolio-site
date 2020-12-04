@@ -1,5 +1,5 @@
 import Home from "./Home";
-import Store from "./Store";
+import Create from "./Create";
 import Modify from "./Modify";
 
-export { Home, Store, Modify };
+export { Home, Create, Modify };

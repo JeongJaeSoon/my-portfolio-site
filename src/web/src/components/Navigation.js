@@ -1,6 +1,6 @@
 import React from "react";
-import { LogoutRequest, AuthRequest } from "../axios";
 import { Link, useLocation } from "react-router-dom";
+import { LogoutRequest, AuthRequest } from "../axios";
 import "./Navigation.css";
 
 const Navigation = () => {
