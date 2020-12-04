@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import List from "./List";
 import View from "./View";
 import Title from "../Title";
@@ -27,20 +28,21 @@ const ProjectHome = ({ match }) => {
     },
   ];
 
-  console.log(match.params.projectId || projects[0].id, "ddd");
   const projectId = match.params.projectId || projects[0].id;
-  // const [projectId, setProjectId] = useState(
-  //   match.params.projectId || projects[0].id,
-  // );
-  console.log(projectId, "aaa");
 
   return (
     <>
-      <Title titleName="My Project" />
-      <div className="project-home">
-        <List projects={projects} projectId={projectId} />
-        <View projectId={projectId} />
-      </div>
+      {isNaN(projectId) ? (
+        <Redirect path="/project/*" to="/project" />
+      ) : (
+        <>
+          <Title titleName="My Project" />
+          <div className="project-home">
+            <List projects={projects} projectId={projectId} />
+            <View projectId={projectId} />
+          </div>
+        </>
+      )}
     </>
   );
 };

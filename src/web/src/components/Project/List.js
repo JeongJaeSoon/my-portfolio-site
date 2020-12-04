@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProjectList = ({ projects, projectId }) => {
-  console.log(projectId);
   return (
     <div className="list">
       <div className="list-title">My Project List</div>

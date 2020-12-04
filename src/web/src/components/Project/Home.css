@@ -1,22 +1,22 @@
 .project-home {
-  overflow: hidden;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
-  border: 1px solid red;
   width: 1000px;
-  height: 550px;
   margin: 0 auto;
+  overflow: hidden;
+  padding: 10px;
 }
 
 .project-home > div {
+  width: 1000px;
+  height: 550px;
   float: left;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
 }
 
 .project .list {
   box-sizing: border-box;
   width: 360px;
-
   padding: 15px 10px;
-  border-radius: 10px;
 }
 
 .project .list .list-title {
@@ -83,6 +83,84 @@
 
 .project .view {
   width: 610px;
+  height: 100%;
   margin-left: 25px;
-  border: 1px solid red;
+}
+
+.project .view .head {
+  height: 80px;
+}
+
+.project .view .head > div {
+  box-sizing: border-box;
+  height: inherit;
+  padding: 15px;
+  float: left;
+}
+
+.project .view .head .left {
+  width: 70%;
+  text-align: left;
+}
+
+.project .view .head .left .title {
+  font-family: Roboto, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.18;
+  color: #6b91fd;
+}
+
+.project .view .head .left .url {
+  font-family: Noto Sans, sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 2.15;
+  color: #213e3b;
+}
+
+.project .view .head .right {
+  width: 30%;
+}
+
+.project .view .head .right a {
+  display: inline-block;
+  width: 30%;
+  font-family: Noto Sans, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 2.15;
+  text-align: right;
+  color: #213e3b;
+}
+
+.project .view .section .img {
+  margin: 30px auto;
+  width: 258px;
+  height: 258px;
+  background: url("../../img/gochi-test.jpg") center/258px no-repeat;
+}
+
+.project .view .section .info li span {
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 23px;
+  line-height: 2;
+  height: 46px;
+}
+
+.project .view .section .info li .title {
+  box-sizing: border-box;
+  width: 40%;
+  padding-right: 30px;
+  font-family: Noto Sans, sans-serif;
+  font-weight: 700;
+  color: #6b91fd;
+  text-align: right;
+}
+
+.project .view .section .info li .value {
+  width: 60%;
+  font-weight: 300;
+  text-align: left;
 }
