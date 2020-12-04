@@ -1,6 +1,7 @@
 import { useAuth } from "../hooks";
+import { urls } from "../config";
 
-const url = "http://laravel.test/api/auth";
+const url = urls.auth;
 
 const AuthRequest = () => {
   const token = localStorage.getItem("token");

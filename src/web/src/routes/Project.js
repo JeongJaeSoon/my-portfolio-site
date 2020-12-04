@@ -8,7 +8,7 @@ const Project = () => {
     <div className="project">
       <Switch>
         <Route path="/project/:projectId" component={Home} />
-        <Redirect path="/project" to="/project/1" />
+        <Route path="/project/" component={Home} />
         <Route path="/project/create" component={Store} />
         <Route path="/project/modify/:projectId" component={Modify} />
         <Redirect path="/project/*" to="/project" />

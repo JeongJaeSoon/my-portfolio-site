@@ -1,0 +1,88 @@
+.project-home {
+  overflow: hidden;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
+  border: 1px solid red;
+  width: 1000px;
+  height: 550px;
+  margin: 0 auto;
+}
+
+.project-home > div {
+  float: left;
+}
+
+.project .list {
+  box-sizing: border-box;
+  width: 360px;
+
+  padding: 15px 10px;
+  border-radius: 10px;
+}
+
+.project .list .list-title {
+  height: 35px;
+  font-family: Roboto, sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.17;
+  margin-bottom: 15px;
+  color: #6b91fd;
+}
+
+.project .list .list-wrapper {
+  height: 470px;
+  overflow: auto;
+}
+
+.project .list .list-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.project .list .list-wrapper::-webkit-scrollbar-thumb {
+  background-color: #373a44;
+  border-radius: 10px;
+}
+
+.project .list .list-wrapper::-webkit-scrollbar-track {
+  background-color: #e1e1ea;
+  border-radius: 10px;
+}
+
+.project .list .list-wrapper .list-content {
+  box-sizing: border-box;
+  width: 97%;
+  height: 173px;
+  margin: 5px auto;
+  padding: 15px;
+  border: solid 1px #cbcbcb;
+  background-color: #ffffff;
+}
+
+.project .list .list-wrapper .project-selected {
+  border: solid 1px #5d76ff;
+}
+
+.project .list .list-wrapper .list-content .project-title {
+  display: block;
+  height: 24px;
+  font-family: Roboto, sans-serif;
+  font-size: 21px;
+  line-height: 1.14;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #213e3b;
+}
+
+.project .list .list-wrapper .list-content .project-content {
+  font-family: Noto Sans, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 2.2;
+  text-align: left;
+}
+
+.project .view {
+  width: 610px;
+  margin-left: 25px;
+  border: 1px solid red;
+}
