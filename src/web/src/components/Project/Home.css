@@ -177,14 +177,13 @@
 
   .project-home > div {
     display: block;
-    /* background-color: rebeccapurple; */
     float: initial;
     margin: 10px auto;
     height: initial;
   }
 
   .project .list {
-    width: 95%;
+    width: 90%;
   }
   .project-home .list .list-wrapper {
     height: initial;
@@ -204,7 +203,7 @@
 
   .project .view {
     margin: 0 auto;
-    width: 95%;
+    width: 90%;
   }
 
   .project .view .header .left {
@@ -231,6 +230,10 @@
     font-size: 18px;
     padding-left: 5%;
     line-height: initial;
+  }
+
+  .project .view .section .info li .title {
+    font-size: 20px;
   }
 
   .project .view .section .info li .title,
