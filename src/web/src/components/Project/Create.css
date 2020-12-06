@@ -11,14 +11,11 @@
 .project-create button {
   outline: none;
   font-family: Roto Sans, sans-serif;
+  text-align: center;
 }
 
 .project-create .title {
   height: 90px;
-}
-
-input {
-  text-align: center;
 }
 
 .project-create .title input {
