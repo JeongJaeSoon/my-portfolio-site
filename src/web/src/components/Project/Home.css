@@ -161,4 +161,82 @@
   width: 70%;
   font-weight: 300;
   text-align: left;
+  font-family: Roboto, sans-serif;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .section {
+    margin-bottom: 10px;
+  }
+
+  .project-home {
+    width: 100%;
+    padding: initial;
+  }
+
+  .project-home > div {
+    display: block;
+    /* background-color: rebeccapurple; */
+    float: initial;
+    margin: 10px auto;
+    height: initial;
+  }
+
+  .project .list {
+    width: 95%;
+  }
+  .project-home .list .list-wrapper {
+    height: initial;
+  }
+
+  .project-home .list .list-wrapper .list-content {
+    height: initial;
+  }
+
+  .project-home .list .list-wrapper .list-content .project-title {
+    margin-bottom: 0;
+  }
+
+  .project-home .list .list-content .project-content {
+    display: none;
+  }
+
+  .project .view {
+    margin: 0 auto;
+    width: 95%;
+  }
+
+  .project .view .header .left {
+    width: 100%;
+  }
+
+  .project .view .header .left .title {
+    font-size: 35px;
+  }
+  .project .view .header .right {
+    display: none;
+  }
+
+  .project .view .section .img {
+    width: 200px;
+    height: 200px;
+    background-size: 200px;
+  }
+
+  .project .view .section .info li span {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    padding-left: 5%;
+    line-height: initial;
+  }
+
+  .project .view .section .info li .title,
+  .project .view .section .info li .value {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+  }
 }
