@@ -1,6 +1,7 @@
 import axios from "axios";
+import { urls } from "../config";
 
-const url = "http://laravel.test/api/login";
+const url = urls.login;
 
 const LoginRequest = ({ email, password, history }) => {
   axios({
@@ -28,6 +29,8 @@ const LoginRequest = ({ email, password, history }) => {
           ? alert(message)
           : status === 422
           ? alert("잘못된 로그인 정보입니다.")
+          : status === 500
+          ? alert("서버로부터 응답이 올바르지 않습니다.")
           : "";
       }
       alert("로그인에 실패하였습니다.");
