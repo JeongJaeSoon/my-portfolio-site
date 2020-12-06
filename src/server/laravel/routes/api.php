@@ -29,3 +29,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     });
 
 });
+
+Route::apiResource('/project', 'ProjectController');
+Route::apiResource('/stack', 'StackController');
