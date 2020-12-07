@@ -82,6 +82,7 @@
 }
 
 .project .view {
+  box-sizing: border-box;
   width: 610px;
   margin-left: 25px;
 }
@@ -164,6 +165,12 @@
   font-family: Roboto, sans-serif;
 }
 
+.project .view .loading {
+  margin-bottom: 10px;
+  padding: 43% 0;
+  box-sizing: border-box;
+}
+
 /* 모바일 */
 @media (max-width: 768px) {
   .section {
@@ -187,6 +194,7 @@
   }
   .project-home .list .list-wrapper {
     height: initial;
+    max-height: 200px;
   }
 
   .project-home .list .list-wrapper .list-content {

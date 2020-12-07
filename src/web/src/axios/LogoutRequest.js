@@ -1,11 +1,9 @@
 import defaultAxios from "axios";
 import { urls } from "../config";
 
-const url = urls.logout;
-
 const LogoutRequest = () => {
+  const url = urls.logout;
   const token = localStorage.getItem("token");
-
   const authAxios = defaultAxios.create({
     headers: {
       Authorization: "Bearer " + token,

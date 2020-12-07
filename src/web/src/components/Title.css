@@ -9,3 +9,11 @@
   color: #5d76ff;
   margin-bottom: 40px;
 }
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .main-title {
+    margin-top: -10%;
+    margin-bottom: 20px;
+  }
+}

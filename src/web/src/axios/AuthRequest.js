@@ -1,11 +1,9 @@
 import { useAuth } from "../hooks";
 import { urls } from "../config";
 
-const url = urls.auth;
-
 const AuthRequest = () => {
+  const url = urls.auth;
   const token = localStorage.getItem("token");
-
   const { data, error } = useAuth(
     {
       method: "get",

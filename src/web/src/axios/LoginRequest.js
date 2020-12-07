@@ -1,9 +1,8 @@
 import axios from "axios";
 import { urls } from "../config";
 
-const url = urls.login;
-
 const LoginRequest = ({ email, password, history }) => {
+  const url = urls.login;
   axios({
     method: "post",
     url,

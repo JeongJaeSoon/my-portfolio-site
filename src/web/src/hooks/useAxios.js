@@ -1,7 +1,7 @@
 import defaultAxios from "axios";
 import { useEffect, useState } from "react";
 
-const useAxios = (opts, menu, axiosInstance = defaultAxios) => {
+const useAxios = (opts, trigger, axiosInstance = defaultAxios) => {
   const [state, setstate] = useState({
     loading: true,
     error: null,
@@ -24,7 +24,7 @@ const useAxios = (opts, menu, axiosInstance = defaultAxios) => {
       .catch((error) => {
         setstate({ ...state, loading: false, error });
       });
-  }, [menu]);
+  }, [trigger]);
   return { ...state, refetch };
 };
 
