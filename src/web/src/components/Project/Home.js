@@ -11,7 +11,7 @@ import "./Home.css";
 
 const ProjectHome = ({ match }) => {
   const url = urls.project.index;
-  const { loading, error, data, refetch } = useAxios({
+  const { loading, error, data } = useAxios({
     method: "get",
     url,
   });
@@ -27,11 +27,6 @@ const ProjectHome = ({ match }) => {
 
   const { projects } = data.data;
   const projectId = match.params.projectId || projects[0].id;
-
-  // const project = useAxios({
-  //   method: "get",
-  //   url: urls.project.show + projectId,
-  // });
 
   return (
     <>
