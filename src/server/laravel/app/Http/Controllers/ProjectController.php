@@ -66,7 +66,7 @@ class ProjectController extends Controller
         }
 
         $result = $this->project->store($request->toArray());
-        return get_class($result) === "App\Project" ?
+        return $result instanceof \App\Project ?
             response([
                 'msg' => '프로젝트 등록에 성공하였습니다.',
                 'result' => $result

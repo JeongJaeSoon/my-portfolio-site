@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use App\Stack;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Validator;
 
 class StackController extends Controller
 {
+    private $stack;
+    private $imgCnt;
+
+    public function __construct()
+    {
+        $this->stack = new Stack();
+        $this->imgCnt = new ImageController();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +25,15 @@ class StackController extends Controller
      */
     public function index()
     {
-        //
-        dd("stack");
+        $stacks = $this->stack->index();
+        $stacks->each(function (&$item) {
+            $stackImg = $this->imgCnt->getStackImg($item['img_url']);
+            $item['stackImg'] = $stackImg;
+        });
+
+        return response([
+            'stacks' => $stacks
+        ]);
     }
 
     /**
@@ -37,7 +54,35 @@ class StackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:20|unique:stacks',
+            'img_url' => 'required|image|max:5000',
+            'skillful' => 'required|string|in:최상,상,중상,중,중하',
+            'frequency' => 'required|integer|min:0|max:100',
+            'color' => 'required|string|min:4|max:7'
+        ]);
+
+        if ($validator->fails()) {
+            return response([
+                'errors' => $validator->errors()->all()
+            ], 422);
+        }
+
+        $result = $this->stack->store([
+            'title' => $request->input('title'),
+            'skillful' => $request->input('skillful'),
+            'frequency' => $request->input('frequency'),
+            'color' => $request->input('color'),
+            'img_url' => $this->imgCnt->saveStackImg($request->input('title'), $request->file('img_url'))
+        ]);
+        return $result instanceof \App\Stack ?
+            response([
+                'msg' => '기술 스택 등록에 성공하였습니다.',
+                'result' => $result
+            ]) : response([
+                'msg' => '기술 스택 등록에 실패하였습니다.'
+            ]);
+
     }
 
     /**

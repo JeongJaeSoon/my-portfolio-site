@@ -37,7 +37,6 @@ const ModalStack = ({ controller }) => {
   };
   const onChangeImg = async ({ target }) => {
     const file = target.files[0];
-
     const options = {
       maxSizeMB: 2,
       maxWidthOrHeight: 150,
@@ -45,8 +44,7 @@ const ModalStack = ({ controller }) => {
 
     try {
       const compressedImgFile = await imageCompression(file, options);
-      setImgFile(compressedImgFile);
-
+      setImgFile(file);
       const promise = imageCompression.getDataUrlFromFile(compressedImgFile);
       promise.then((result) => {
         setImgFileUrl(result);
@@ -84,16 +82,28 @@ const ModalStack = ({ controller }) => {
       const authAxios = Axios.create({
         headers: {
           Authorization: "Bearer " + token,
+          "content-type": "multipart/form-data",
         },
       });
+      const formData = new FormData();
+      formData.append("title", name);
+      formData.append("img_url", imgFile);
+      formData.append("skillful", skillful);
+      formData.append("frequency", frequency);
+      formData.append("color", color);
+
       const options = {
         method: "post",
         url,
-        data: {
-          url: imgFileUrl,
-        },
+        data: formData,
       };
-      authAxios(options).then((data) => console.log(data.data));
+      authAxios(options)
+        .then((data) => console.log(data.data))
+        .catch((error) => {
+          if (error) {
+            console.log(error.response.data);
+          }
+        });
       return;
     }
     alert("모두 입력하였는지 확인해주세요.");
