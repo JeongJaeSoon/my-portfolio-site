@@ -26,6 +26,7 @@ class StackController extends Controller
     public function index()
     {
         $stacks = $this->stack->index();
+
         $stacks->each(function (&$item) {
             $stackImg = $this->imgCnt->getStackImg($item['img_url']);
             $item['stackImg'] = $stackImg;
