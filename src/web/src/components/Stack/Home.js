@@ -5,6 +5,7 @@ import Add from "./Add";
 import "./Home.css";
 
 const StackHome = () => {
+  const token = localStorage.getItem("token");
   const data = [
     {
       id: 5,
@@ -42,7 +43,7 @@ const StackHome = () => {
           const { id } = element;
           return <Item key={id} stackData={element} />;
         })}
-        <Add />
+        {token ? <Add /> : ""}
       </div>
     </>
   );

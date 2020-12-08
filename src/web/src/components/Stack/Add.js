@@ -4,8 +4,7 @@ import ModalStack from "./ModalStack";
 import "./Add.css";
 
 const StackAdd = () => {
-  // TODO Modal 수정
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const addBtn = useClick(() => {
     setModalIsOpen(true);
   }, modalIsOpen);

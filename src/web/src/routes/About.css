@@ -1,6 +1,5 @@
 .about > div:last-child {
   box-sizing: border-box;
-  /* border: 1px solid royalblue; */
   overflow: hidden;
 }
 
@@ -36,7 +35,7 @@
 
 .about .header .profile-value .left {
   width: 80%;
-  text-align: center;
+  text-align: right;
 }
 
 .about .header .profile-value .left > div {
@@ -224,6 +223,7 @@
 
   .about .header .profile-value .left {
     width: initial;
+    text-align: center;
   }
 
   .about .header .profile-value .left .main-txt {
