@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static create(array $project_data)
+ */
 class Stack extends Model
 {
     /**
@@ -14,4 +17,14 @@ class Stack extends Model
     protected $fillable = [
         'title', 'img_url', 'skillful', 'frequency', 'color'
     ];
+
+    public function index()
+    {
+        return self::all();
+    }
+
+    public function store(array $project_data)
+    {
+        return self::create($project_data);
+    }
 }

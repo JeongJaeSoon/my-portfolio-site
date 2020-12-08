@@ -3,9 +3,9 @@ import { Redirect } from "react-router-dom";
 import { useAxios } from "../../hooks";
 import { urls } from "../../config";
 import Loading from "../Util/Loading";
+import Title from "../Util/Title";
 import List from "./List";
 import View from "./View";
-import Title from "../Util/Title";
 
 import "./Home.css";
 

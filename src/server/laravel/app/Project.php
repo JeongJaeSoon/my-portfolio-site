@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static create(array $project_data)
+ */
 class Project extends Model
 {
     /**

@@ -1,15 +1,17 @@
 import React from "react";
 import "./Item.css";
 
-const StackItem = ({ stackData }) => {
-  const { name, img_url, color, skillful, frequency } = stackData;
+const StackItem = ({ stack }) => {
+  const { title, stackImg, color, skillful, frequency } = stack;
   return (
     <div className="item">
       <div className="top">
         <div className="delete-btn">&#10005;</div>
         <div
           className="img"
-          style={{ background: `url(${img_url}) center/150px no-repeat` }}
+          style={{
+            background: `url(${stackImg}) center/contain no-repeat`,
+          }}
         ></div>
         <div className="value">
           <div className="skillful" style={{ color }}>
@@ -24,7 +26,7 @@ const StackItem = ({ stackData }) => {
         </div>
       </div>
       <div className="bottom" style={{ backgroundColor: color }}>
-        {name}
+        {title}
       </div>
     </div>
   );
