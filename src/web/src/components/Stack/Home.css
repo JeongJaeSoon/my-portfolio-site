@@ -1,3 +1,7 @@
+.stacks {
+  height: 600px;
+}
+
 .stack .stacks {
   height: 600px;
   overflow: auto;
@@ -20,7 +24,15 @@
 /* 모바일 */
 @media (max-width: 768px) {
   .stack .stacks {
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
+    padding: 10;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  .stack .stacks .item,
+  .stack .stack-add {
+    width: 270px;
   }
 }

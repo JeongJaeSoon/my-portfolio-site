@@ -19,14 +19,17 @@
 }
 
 .stacks .stack-add .top .add-btn {
-  background: none;
-  border: none;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90px;
-  height: 90px;
+  font-size: 150px;
+  line-height: 150px;
+  color: #cbcbcb;
+  text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  outline: none;
+  background: none;
+  border: none;
 }
 
 .stacks .stack-add .bottom {
@@ -39,3 +42,8 @@
   font-weight: 600;
   color: #ffffff;
 }
+
+/* .stack-modal {
+  background-color: red;
+  width: ;
+} */

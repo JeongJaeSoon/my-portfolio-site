@@ -1,0 +1,114 @@
+.stack-modal .header {
+  overflow: hidden;
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.stack-modal .header .sub-title {
+  position: absolute;
+  width: 100%;
+  font-size: 35px;
+  font-weight: 700;
+  font-family: Roboto, sans-serif;
+  text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.16);
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -2.5px;
+  text-align: center;
+  color: #5d76ff;
+}
+
+.stack-modal .header .close-btn {
+  position: absolute;
+  right: 0;
+  background: none;
+  border: none;
+  font-size: 20px;
+  text-align: right;
+  outline: none;
+  cursor: pointer;
+}
+
+.stack-modal .section .name {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  height: 40px;
+  border-radius: 100px;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #dcdcdc;
+  font-size: 20px;
+  font-family: Noto Sans, sans-serif;
+  outline: none;
+  text-align: center;
+}
+
+.stack-modal .section .img-btn {
+  font-size: 15px;
+  width: 53%;
+  display: block;
+  margin: 30px auto;
+  outline: none;
+}
+
+.stack-modal .section li {
+  height: 60px;
+}
+
+.stack-modal .section li > p {
+  box-sizing: border-box;
+  width: 60%;
+  height: 50px;
+  line-height: 50px;
+  float: left;
+}
+
+.stack-modal .section .title {
+  padding-right: 20px;
+  font-family: Noto Sans, sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  text-align: right;
+  color: #213e3b;
+  width: 40%;
+}
+
+.stack-modal .section .value select,
+.stack-modal .section .value .stack-frequency {
+  box-sizing: border-box;
+  height: 80%;
+  width: 80%;
+  text-align: center;
+  border-radius: 50px;
+  text-align: center;
+  outline: none;
+  font-size: 18px;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.stack-modal .section .value select {
+  padding-left: 25%;
+}
+
+.stack-modal .section .value .stack-color {
+  margin: 0 25%;
+}
+
+.stack-modal .section .save-btn {
+  display: block;
+  margin: 20px auto 10px auto;
+  width: 120px;
+  height: 45px;
+  border-radius: 100px;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.16);
+  background-color: #6b91fd;
+  outline: none;
+  font-family: Noto Sans, sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  border: none;
+}
