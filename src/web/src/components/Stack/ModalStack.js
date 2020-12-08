@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import Resizer from "react-image-file-resizer";
 import Modal from "react-modal";
-
+import axios from "axios";
 import "./ModalStack.css";
 
 Modal.setAppElement("#root");
@@ -19,22 +20,40 @@ const customStyles = {
 
 const ModalStack = ({ controller }) => {
   const { modalIsOpen, setModalIsOpen } = controller;
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
   const skillfulList = ["최상", "상", "중상", "중", "중하"];
   const [name, setName] = useState("");
-  const [imgFile, setImgFile] = useState(null);
+  const [imgFile, setImgFile] = useState();
+  const [imgBase64, setImgBase64] = useState("");
   const [skillful, setSkillful] = useState(skillfulList[0]);
   const [frequency, setFrequency] = useState(0);
   const [color, setColor] = useState("#000000");
 
+  const resizeFile = (file) =>
+    new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        file,
+        150,
+        150,
+        "JPEG",
+        100,
+        0,
+        (uri) => {
+          resolve(uri);
+        },
+        "base64",
+      );
+    });
+
   const onChangeName = ({ target }) => {
     setName(target.value.toUpperCase());
   };
-  const onChangeImg = ({ target }) => {
-    console.log(target.files[0]);
-    setImgFile(target.files[0]);
+  const onChangeImg = async ({ target }) => {
+    const file = target.files[0];
+    const form = new FormData();
+    const image = await resizeFile(file);
+    console.log(file);
+    setImgBase64(image);
+    form.append("stack", file);
   };
   const onChangeSkillFul = ({ target }) => {
     setSkillful(target.value);
@@ -49,6 +68,10 @@ const ModalStack = ({ controller }) => {
   };
   const onChangeColor = ({ target }) => {
     setColor(target.value);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
   };
 
   return (
@@ -76,10 +99,9 @@ const ModalStack = ({ controller }) => {
           <div
             className="img-show"
             style={{
-              border: "1px solid red",
               width: "150px",
               height: "150px",
-              // background: `url(${img}) center/150px no-repeat`,
+              background: `url(${imgBase64}) center/150px no-repeat`,
             }}
           ></div>
           <input
