@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import Resizer from "react-image-file-resizer";
+import Axios from "axios";
 import Modal from "react-modal";
-import axios from "axios";
+import imageCompression from "browser-image-compression";
+import { urls } from "../../config";
+
 import "./ModalStack.css";
 
 Modal.setAppElement("#root");
@@ -19,41 +21,39 @@ const customStyles = {
 };
 
 const ModalStack = ({ controller }) => {
+  const url = urls.stack.store;
+  const token = localStorage.getItem("token");
   const { modalIsOpen, setModalIsOpen } = controller;
   const skillfulList = ["최상", "상", "중상", "중", "중하"];
   const [name, setName] = useState("");
-  const [imgFile, setImgFile] = useState();
-  const [imgBase64, setImgBase64] = useState("");
+  const [imgFile, setImgFile] = useState(null);
+  const [imgFileUrl, setImgFileUrl] = useState("");
   const [skillful, setSkillful] = useState(skillfulList[0]);
   const [frequency, setFrequency] = useState(0);
   const [color, setColor] = useState("#000000");
-
-  const resizeFile = (file) =>
-    new Promise((resolve) => {
-      Resizer.imageFileResizer(
-        file,
-        150,
-        150,
-        "JPEG",
-        100,
-        0,
-        (uri) => {
-          resolve(uri);
-        },
-        "base64",
-      );
-    });
 
   const onChangeName = ({ target }) => {
     setName(target.value.toUpperCase());
   };
   const onChangeImg = async ({ target }) => {
     const file = target.files[0];
-    const form = new FormData();
-    const image = await resizeFile(file);
-    console.log(file);
-    setImgBase64(image);
-    form.append("stack", file);
+
+    const options = {
+      maxSizeMB: 2,
+      maxWidthOrHeight: 150,
+    };
+
+    try {
+      const compressedImgFile = await imageCompression(file, options);
+      setImgFile(compressedImgFile);
+
+      const promise = imageCompression.getDataUrlFromFile(compressedImgFile);
+      promise.then((result) => {
+        setImgFileUrl(result);
+      });
+    } catch (error) {
+      alert(error);
+    }
   };
   const onChangeSkillFul = ({ target }) => {
     setSkillful(target.value);
@@ -72,6 +72,31 @@ const ModalStack = ({ controller }) => {
 
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+  const onStoreHandler = () => {
+    // const flag = window.confirm("Tech Stack 을 추가하시겠습니까?");
+    const flag = true;
+    if (!flag) {
+      return;
+    }
+
+    if (imgFileUrl && name) {
+      const authAxios = Axios.create({
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      const options = {
+        method: "post",
+        url,
+        data: {
+          url: imgFileUrl,
+        },
+      };
+      authAxios(options).then((data) => console.log(data.data));
+      return;
+    }
+    alert("모두 입력하였는지 확인해주세요.");
   };
 
   return (
@@ -101,14 +126,13 @@ const ModalStack = ({ controller }) => {
             style={{
               width: "150px",
               height: "150px",
-              background: `url(${imgBase64}) center/150px no-repeat`,
+              background: `url(${imgFileUrl}) center/150px no-repeat`,
             }}
           ></div>
           <input
             type="file"
-            accept="image/gif, image/jpeg, image/png"
+            accept="image/gif, image/jpeg, image/jpg, image/png"
             className="img-btn"
-            value={imgFile}
             onChange={onChangeImg}
           />
           <ul>
@@ -153,7 +177,9 @@ const ModalStack = ({ controller }) => {
               </p>
             </li>
           </ul>
-          <button className="save-btn">저장</button>
+          <button className="save-btn" onClick={onStoreHandler}>
+            저장
+          </button>
         </div>
       </div>
     </Modal>

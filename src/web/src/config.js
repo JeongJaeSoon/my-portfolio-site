@@ -7,6 +7,10 @@ const urls = {
     index: `${baseURL}/project`,
     show: `${baseURL}/project/`,
   },
+  stack: {
+    index: `${baseURL}/stack`,
+    store: `${baseURL}/stack`,
+  },
 };
 
 export { urls };
