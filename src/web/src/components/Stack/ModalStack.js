@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import Axios from "axios";
 import Modal from "react-modal";
 import imageCompression from "browser-image-compression";
@@ -70,6 +71,7 @@ const ModalStack = ({ controller }) => {
 
   const closeModal = () => {
     setModalIsOpen(false);
+    window.location.reload();
   };
   const onStoreHandler = () => {
     // const flag = window.confirm("Tech Stack 을 추가하시겠습니까?");
@@ -98,10 +100,28 @@ const ModalStack = ({ controller }) => {
         data: formData,
       };
       authAxios(options)
-        .then((data) => console.log(data.data))
+        .then((data) => {
+          if (data && data.status === 200) {
+            const { msg } = data.data;
+            alert(msg);
+            closeModal();
+            return <Redirect path="*" to="/" />;
+          }
+        })
         .catch((error) => {
-          if (error) {
-            console.log(error.response.data);
+          if (error.response) {
+            const {
+              status,
+              data: { message },
+            } = error.response;
+
+            return status === 401
+              ? alert(message)
+              : status === 422
+              ? alert("이미 등록되었거나, 잘못된 값을 입력하였습니다.")
+              : status === 500
+              ? alert("서버로부터 응답이 올바르지 않습니다.")
+              : "";
           }
         });
       return;

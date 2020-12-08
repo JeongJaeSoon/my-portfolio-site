@@ -2,7 +2,6 @@ import React from "react";
 import "./Item.css";
 
 const StackItem = ({ stack }) => {
-  console.log(stack);
   const { title, stackImg, color, skillful, frequency } = stack;
   return (
     <div className="item">
@@ -11,8 +10,7 @@ const StackItem = ({ stack }) => {
         <div
           className="img"
           style={{
-            background: `url(${stackImg}) center no-repeat`,
-            backgroundSize: "contain",
+            background: `url(${stackImg}) center/contain no-repeat`,
           }}
         ></div>
         <div className="value">
