@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const useClick = (onClick) => {
+const useClick = (onClick, trigger) => {
   const element = useRef();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const useClick = (onClick) => {
         element.current.removeEventListener("click", onClick);
       }
     };
-  }, []);
+  }, [trigger]);
   return element;
 };
 
