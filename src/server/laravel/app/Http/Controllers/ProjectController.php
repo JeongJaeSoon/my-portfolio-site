@@ -131,6 +131,5 @@ class ProjectController extends Controller
         return response([
             'msg' => '삭제에 성공하였습니다.'
         ]);
-//        dd($project->delete());
     }
 }

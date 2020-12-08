@@ -30,9 +30,8 @@ const LoginRequest = ({ email, password, history }) => {
           ? alert("잘못된 로그인 정보입니다.")
           : status === 500
           ? alert("서버로부터 응답이 올바르지 않습니다.")
-          : "";
+          : alert("로그인에 실패하였습니다.");
       }
-      alert("로그인에 실패하였습니다.");
       history.push("/");
       return;
     });

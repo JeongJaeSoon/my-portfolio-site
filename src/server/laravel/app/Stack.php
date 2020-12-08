@@ -27,4 +27,9 @@ class Stack extends Model
     {
         return self::create($project_data);
     }
+
+    public function remove(Stack $stack)
+    {
+        return $stack->delete($stack);
+    }
 }

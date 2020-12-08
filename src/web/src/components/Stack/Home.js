@@ -37,7 +37,7 @@ const StackHome = () => {
       <div className="stacks">
         {stackData.map((element) => {
           const { id } = element;
-          return <Item key={id} stack={element} />;
+          return <Item key={id} dataKey={id} stack={element} />;
         })}
         {token ? <Add /> : ""}
       </div>

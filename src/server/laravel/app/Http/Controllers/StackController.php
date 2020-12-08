@@ -128,6 +128,16 @@ class StackController extends Controller
      */
     public function destroy(Stack $stack)
     {
-        //
+        try {
+            $this->stack->remove($stack);
+        } catch (Exception $exception) {
+            return response([
+                'msg' => '삭제에 실패하였습니다.'
+            ]);
+        }
+
+        return response([
+            'msg' => '삭제에 성공하였습니다.'
+        ]);
     }
 }

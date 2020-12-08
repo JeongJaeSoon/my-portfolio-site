@@ -10,6 +10,7 @@ const urls = {
   stack: {
     index: `${baseURL}/stack`,
     store: `${baseURL}/stack`,
+    delete: `${baseURL}/stack/`,
   },
 };
 
