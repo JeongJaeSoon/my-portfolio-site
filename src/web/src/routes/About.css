@@ -36,7 +36,7 @@
 
 .about .header .profile-value .left {
   width: 80%;
-  text-align: right;
+  text-align: center;
 }
 
 .about .header .profile-value .left > div {
@@ -245,7 +245,7 @@
   }
 
   .about .header .profile-value .right > div {
-    text-align: left;
+    text-align: center;
   }
 
   .about .header .profile-value .right > div > p {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import Title from "../Title";
+import Title from "../Util/Title";
 
 import "./Create.css";
 

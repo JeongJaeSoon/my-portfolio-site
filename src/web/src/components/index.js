@@ -1,4 +1,5 @@
-import Navigation from "./Navigation";
-import Footer from "./Footer";
+import Navigation from "./Util/Navigation";
+import Title from "./Util/Title";
+import Footer from "./Util/Footer";
 
-export { Navigation, Footer };
+export { Navigation, Title, Footer };

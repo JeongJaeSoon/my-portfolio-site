@@ -1,0 +1,41 @@
+.stacks .stack-add {
+  box-sizing: border-box;
+  width: 270px;
+  height: 270px;
+  display: inline-block;
+  margin: 10px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.stacks .stack-add > div {
+  box-sizing: border-box;
+}
+
+.stacks .stack-add .top {
+  height: 220px;
+  padding: 15px;
+  position: relative;
+}
+
+.stacks .stack-add .top .add-btn {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+}
+
+.stacks .stack-add .bottom {
+  background-color: #2f2f2f;
+  height: 50px;
+  border-radius: 0 0 30px 30px;
+  line-height: 50px;
+  font-family: Roboto, sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;
+}

@@ -2,10 +2,10 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { useAxios } from "../../hooks";
 import { urls } from "../../config";
-import Loading from "../Loading";
+import Loading from "../Util/Loading";
 import List from "./List";
 import View from "./View";
-import Title from "../Title";
+import Title from "../Util/Title";
 
 import "./Home.css";
 
