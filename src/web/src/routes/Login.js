@@ -5,9 +5,8 @@ import { LoginRequest } from "../axios";
 import "./Login.css";
 
 const Login = ({ history }) => {
-  // TODO
-  const id = useInput("wjdwotns1006@gmail.com");
-  const password = useInput("1541call");
+  const id = useInput("");
+  const password = useInput("");
 
   const onLoginHandler = () => {
     if (id.value && password.value) {
