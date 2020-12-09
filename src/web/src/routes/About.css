@@ -15,8 +15,8 @@
 .about .header .profile-img {
   width: 400px;
   height: 400px;
-  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.16);
-  border: 20px solid #c7d6ff;
+  box-shadow: 0 0 30px 0 rgba(43, 73, 130, 0.7);
+  border: solid 20px #3773d4;
   border-radius: 100%;
 }
 
@@ -52,7 +52,7 @@
 .about .header .profile-value .left .txt {
   font-size: 100px;
   font-weight: 700;
-  color: #6b91fd;
+  color: #3773d4;
 }
 
 .about .header .profile-value .left .name-txt {
@@ -143,7 +143,7 @@
   height: 50px;
   outline: none;
   border: none;
-  background-color: #6b91fd;
+  background-color: #3773d4;
   color: #ffffff;
   font-size: 17px;
   border-radius: 50px;
@@ -151,7 +151,7 @@
 }
 
 .about .section .introduce-wrapper .img-btn:hover {
-  box-shadow: 0 0 10px 0 #6b91fd;
+  box-shadow: 0 0 10px 0 #3773d4;
   transition: 0.5s;
 }
 
@@ -202,8 +202,8 @@
   }
 
   .about .header .profile-img {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     margin: 0 auto;
     border-width: 10px;
   }

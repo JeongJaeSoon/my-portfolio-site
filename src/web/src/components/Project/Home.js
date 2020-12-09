@@ -26,6 +26,19 @@ const ProjectHome = ({ match }) => {
   }
 
   const { projects } = data.data;
+
+  if (projects.length === 0) {
+    return (
+      <>
+        <Title titleName="My Project" />
+        <div className="project-home">
+          <List />
+          <View />
+        </div>
+      </>
+    );
+  }
+
   const projectId = match.params.projectId || projects[0].id;
 
   return (

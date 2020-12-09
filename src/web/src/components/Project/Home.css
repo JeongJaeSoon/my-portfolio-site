@@ -26,7 +26,7 @@
   font-weight: 600;
   line-height: 1.17;
   margin-bottom: 15px;
-  color: #6b91fd;
+  color: #3773d4;
 }
 
 .project .list .list-wrapper {
@@ -59,7 +59,7 @@
 }
 
 .project .list .list-wrapper .project-selected {
-  border: solid 1px #5d76ff;
+  border: solid 1px #3773d4;
 }
 
 .project .list .list-wrapper .list-content .project-title {
@@ -107,7 +107,7 @@
   font-size: 40px;
   font-weight: 700;
   line-height: 1.18;
-  color: #6b91fd;
+  color: #3773d4;
 }
 
 .project .view .header .left .url {
@@ -122,15 +122,21 @@
   width: 30%;
 }
 
-.project .view .header .right a {
+.project .view .header .right .project-menu {
   display: inline-block;
   width: 30%;
   font-family: Noto Sans, sans-serif;
   font-size: 20px;
   font-weight: 300;
   line-height: 2.15;
-  text-align: right;
+  text-align: left;
   color: #213e3b;
+  cursor: pointer;
+}
+
+.project .view .header .right .project-menu:hover {
+  font-weight: 700;
+  transition: 0.5s;
 }
 
 .project .view .section .img {
@@ -154,7 +160,7 @@
   padding-right: 30px;
   font-family: Noto Sans, sans-serif;
   font-weight: 700;
-  color: #6b91fd;
+  color: #3773d4;
   text-align: right;
 }
 
@@ -210,8 +216,9 @@
   }
 
   .project .view {
-    margin: 0 auto;
+    margin: 0 auto 10px auto;
     width: 90%;
+    min-height: 200px;
   }
 
   .project .view .header .left {

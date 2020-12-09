@@ -3,8 +3,8 @@
   width: 400px;
   height: 400px;
   margin: 0 auto;
-  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.16);
-  border: solid 20px #c7d6ff;
+  box-shadow: 0 0 30px 0 rgba(43, 73, 130, 0.7);
+  border: solid 20px #3773d4;
   border-radius: 100%;
 }
 
@@ -16,7 +16,7 @@
   font-size: 130px;
   font-weight: 700;
   letter-spacing: -6.5px;
-  color: #6b91fd;
+  color: #3773d4;
 }
 
 /* PC */
