@@ -28,7 +28,7 @@ const StackItem = ({ stack, dataKey }) => {
         if (data && data.status === 200) {
           const { msg } = data.data;
           alert(msg);
-          window.location.reload();
+          window.location.href = "/stack";
         }
       })
       .catch((error) => {

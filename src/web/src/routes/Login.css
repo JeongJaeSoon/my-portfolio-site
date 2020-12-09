@@ -15,7 +15,7 @@
 .login .right {
   position: absolute;
   right: 0;
-  background-color: #6b91fd;
+  background-color: #3773d4;
   color: white;
 }
 
@@ -32,7 +32,7 @@
   font-size: 60px;
   font-weight: 700;
   line-height: 1.18;
-  color: #6b91fd;
+  color: #3773d4;
   margin-bottom: 80px;
 }
 
@@ -59,14 +59,14 @@
 
 .login .left .id input:focus,
 .login .left .password input:focus {
-  box-shadow: 0 0 10px 0 #6b91fd;
-  border: 1px solid #6b91fd;
+  box-shadow: 0 0 10px 0 #3773d4;
+  border: 1px solid #3773d4;
   transition: 0.7s;
 }
 
 .login .left .id input:focus + .fas,
 .login .left .password input:focus + .fas {
-  color: #6b91fd;
+  color: #3773d4;
   transition: 0.7s;
 }
 
@@ -81,13 +81,13 @@
 .login .left a {
   display: block;
   font-family: Noto Sans, sans-serif;
-  color: #6b91fd;
+  color: #3773d4;
   margin: 5px;
   font-size: 15px;
 }
 
 .login .login-btn {
-  background-color: #6b91fd;
+  background-color: #3773d4;
   color: white;
 }
 

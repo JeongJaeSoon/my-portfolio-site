@@ -31,6 +31,17 @@ const StackHome = () => {
     const { stacks } = data.data;
     stacks.map((element) => stackData.push(element));
   }
+
+  if (stackData.length === 0) {
+    token || alert("등록된 기술스택이 없습니다.");
+
+    return (
+      <>
+        <Title titleName="Tech Stack" />
+        <div className="stacks">{token ? <Add /> : ""}</div>
+      </>
+    );
+  }
   return (
     <>
       <Title titleName="Tech Stack" />

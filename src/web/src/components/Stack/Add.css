@@ -32,6 +32,11 @@
   border: none;
 }
 
+.stacks .stack-add .top .add-btn:hover {
+  color: #3773d4;
+  transition: 0.5s;
+}
+
 .stacks .stack-add .bottom {
   background-color: #2f2f2f;
   height: 50px;

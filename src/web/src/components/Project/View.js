@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 import { useAxios } from "../../hooks";
 import { urls } from "../../config";
 
 const ProjectView = ({ projectId }) => {
   const [id, setId] = useState(projectId);
+  const url = urls.project.show + id;
+  const token = localStorage.getItem("token");
 
   if (projectId !== id) {
     setId(projectId);
   }
 
-  const url = urls.project.show + id;
   const { loading, error, data } = useAxios(
     {
       method: "get",
@@ -18,6 +20,25 @@ const ProjectView = ({ projectId }) => {
     },
     id,
   );
+
+  if (!projectId) {
+    return (
+      <div className="view" style={{ position: "relative" }}>
+        <p
+          style={{
+            lineHeight: "10",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "100%",
+          }}
+        >
+          {token ? "추가" : "로그인 후, 프로젝트를 추가할 수 있습니다."}
+        </p>
+      </div>
+    );
+  }
 
   if (loading || error) {
     return (
@@ -43,8 +64,45 @@ const ProjectView = ({ projectId }) => {
     role,
     // stacks,
   } = data.data.project;
-  const isLogin = localStorage.getItem("token");
 
+  const onDeleteHandler = () => {
+    const flag = window.confirm("삭제하시겠습니까?");
+    if (!flag) {
+      return;
+    }
+
+    const authAxios = Axios.create({
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    const options = {
+      method: "delete",
+      url,
+    };
+    authAxios(options)
+      .then((data) => {
+        if (data && data.status === 200) {
+          const { msg } = data.data;
+          alert(msg);
+          window.location.href = "/project";
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          const {
+            status,
+            data: { message },
+          } = error.response;
+
+          return status === 401
+            ? alert(message)
+            : alert("삭제에 실패하였습니다.");
+        }
+        return;
+      });
+    return;
+  };
   const stacks = ["aa", "bb", "cc"];
   return (
     <div className="view">
@@ -56,11 +114,17 @@ const ProjectView = ({ projectId }) => {
           </a>
         </div>
         <div className="right">
-          {isLogin ? (
+          {token ? (
             <>
-              <Link to="/project/create">추가</Link>
-              <Link to={`/project/modify/${id}`}>수정</Link>
-              <Link to={`/project/delete/${id}`}>삭제</Link>
+              <Link to="/project/create" className="project-menu">
+                추가
+              </Link>
+              <Link to={`/project/modify/${id}`} className="project-menu">
+                수정
+              </Link>
+              <div className="project-menu" onClick={onDeleteHandler}>
+                삭제
+              </div>
             </>
           ) : (
             ""

@@ -17,7 +17,7 @@
   font-style: normal;
   letter-spacing: -2.5px;
   text-align: center;
-  color: #5d76ff;
+  color: #3773d4;
 }
 
 .stack-modal .header .close-btn {
@@ -104,7 +104,7 @@
   height: 45px;
   border-radius: 100px;
   box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.16);
-  background-color: #6b91fd;
+  background-color: #3773d4;
   outline: none;
   font-family: Noto Sans, sans-serif;
   font-size: 18px;
