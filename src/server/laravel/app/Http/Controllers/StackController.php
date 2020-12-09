@@ -18,6 +18,13 @@ class StackController extends Controller
         $this->imgCnt = new ImageController();
     }
 
+    public function list()
+    {
+        return response([
+            'stackList' => $this->stack->getList()
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *

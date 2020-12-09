@@ -18,6 +18,11 @@ class Stack extends Model
         'title', 'img_url', 'skillful', 'frequency', 'color'
     ];
 
+    public function getList()
+    {
+        return self::all('id', 'title', 'color');
+    }
+
     public function index()
     {
         return self::all();

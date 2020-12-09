@@ -23,6 +23,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     Route::post('/register', 'Auth\ApiAuthController@register')->name('register.api');
     Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
+    Route::get("/stack/list", 'StackController@list');
+
     Route::middleware('auth:api')->group(function () {
         Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
         Route::get('/auth', 'Auth\ApiAuthController@auth')->name('auth.api');
