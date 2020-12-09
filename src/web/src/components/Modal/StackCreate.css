@@ -76,7 +76,8 @@
 }
 
 .stack-modal .section .value select,
-.stack-modal .section .value .stack-frequency {
+.stack-modal .section .value .stack-frequency,
+.stack-modal .section .value .stack-color-code {
   box-sizing: border-box;
   height: 80%;
   width: 80%;
@@ -84,7 +85,8 @@
   border-radius: 50px;
   text-align: center;
   outline: none;
-  font-size: 18px;
+  font-size: 15px;
+  line-height: 2;
   border: 1px solid #dcdcdc;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
@@ -94,7 +96,12 @@
 }
 
 .stack-modal .section .value .stack-color {
-  margin: 0 25%;
+  float: left;
+  margin-top: 11px;
+}
+.stack-modal .section .value .stack-color-code {
+  width: 50%;
+  margin-left: 5%;
 }
 
 .stack-modal .section .save-btn {

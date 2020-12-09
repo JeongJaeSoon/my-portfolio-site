@@ -34,7 +34,13 @@ const ProjectView = ({ projectId }) => {
             width: "100%",
           }}
         >
-          {token ? "추가" : "로그인 후, 프로젝트를 추가할 수 있습니다."}
+          {token ? (
+            <Link to="/project/create" className="project-menu">
+              추가
+            </Link>
+          ) : (
+            "로그인 후, 프로젝트를 추가할 수 있습니다."
+          )}
         </p>
       </div>
     );

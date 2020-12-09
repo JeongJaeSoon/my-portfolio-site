@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useClick } from "../../hooks";
-import ModalStack from "./ModalStack";
+import StackCreate from "../Modal/StackCreate";
 import "./Add.css";
 
 const StackAdd = () => {
@@ -15,7 +15,7 @@ const StackAdd = () => {
         <button ref={addBtn} className="add-btn">
           +
         </button>
-        <ModalStack controller={{ modalIsOpen, setModalIsOpen }} />
+        <StackCreate controller={{ modalIsOpen, setModalIsOpen }} />
       </div>
       <div className="bottom">ADD</div>
     </div>

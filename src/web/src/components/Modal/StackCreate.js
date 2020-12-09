@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import imageCompression from "browser-image-compression";
 import { urls } from "../../config";
 
-import "./ModalStack.css";
+import "./StackCreate.css";
 
 Modal.setAppElement("#root");
 
@@ -154,7 +154,8 @@ const ModalStack = ({ controller }) => {
             style={{
               width: "150px",
               height: "150px",
-              background: `url(${imgFileUrl}) center/150px no-repeat`,
+              background: `url(${imgFileUrl}) center no-repeat`,
+              backgroundSize: "contain",
             }}
           ></div>
           <input
@@ -199,6 +200,12 @@ const ModalStack = ({ controller }) => {
                 <input
                   type="color"
                   className="stack-color"
+                  value={color}
+                  onChange={onChangeColor}
+                />
+                <input
+                  type="text"
+                  className="stack-color-code"
                   value={color}
                   onChange={onChangeColor}
                 />

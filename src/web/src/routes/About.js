@@ -34,7 +34,17 @@ const About = () => {
             <div className="main-txt">{main}</div>
             <div className="txt">개발자</div>
             <div className="name-txt">
-              <span>정재순</span>
+              <span>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://github.com/JeongJaeSoon"
+                  className="url"
+                  style={{ color: "inherit" }}
+                >
+                  정재순
+                </a>
+              </span>
               <span>입니다.</span>
             </div>
           </div>

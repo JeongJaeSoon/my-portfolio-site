@@ -121,10 +121,9 @@
 .project .view .header .right {
   width: 30%;
 }
-
+.project .view .project-menu,
 .project .view .header .right .project-menu {
   display: inline-block;
-  width: 30%;
   font-family: Noto Sans, sans-serif;
   font-size: 20px;
   font-weight: 300;
@@ -134,6 +133,11 @@
   cursor: pointer;
 }
 
+.project .view .header .right .project-menu {
+  width: 30%;
+}
+
+.project .view .project-menu:hover,
 .project .view .header .right .project-menu:hover {
   font-weight: 700;
   transition: 0.5s;
