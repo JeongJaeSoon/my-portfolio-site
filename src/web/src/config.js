@@ -1,4 +1,4 @@
-const baseURL = "http://localhost/api";
+const baseURL = "http://www.94soon.net/api";
 const urls = {
   auth: `${baseURL}/auth`,
   login: `${baseURL}/login`,
