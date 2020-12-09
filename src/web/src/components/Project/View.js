@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Axios from "axios";
+import { RequestDelete } from "../../axios";
 import { useAxios } from "../../hooks";
 import { urls } from "../../config";
 
@@ -72,43 +72,14 @@ const ProjectView = ({ projectId }) => {
   } = data.data.project;
 
   const onDeleteHandler = () => {
+    const nextUrl = "/project";
     const flag = window.confirm("삭제하시겠습니까?");
     if (!flag) {
       return;
     }
-
-    const authAxios = Axios.create({
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
-    const options = {
-      method: "delete",
-      url,
-    };
-    authAxios(options)
-      .then((data) => {
-        if (data && data.status === 200) {
-          const { msg } = data.data;
-          alert(msg);
-          window.location.href = "/project";
-        }
-      })
-      .catch((error) => {
-        if (error.response) {
-          const {
-            status,
-            data: { message },
-          } = error.response;
-
-          return status === 401
-            ? alert(message)
-            : alert("삭제에 실패하였습니다.");
-        }
-        return;
-      });
-    return;
+    RequestDelete({ url, nextUrl });
   };
+
   const stacks = ["aa", "bb", "cc"];
   return (
     <div className="view">

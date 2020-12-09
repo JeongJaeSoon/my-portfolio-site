@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import Modal from "react-modal";
 import imageCompression from "browser-image-compression";
+import { RequestImgUpload } from "../../axios";
 import { urls } from "../../config";
 
 import "./StackCreate.css";
@@ -73,58 +74,23 @@ const ModalStack = ({ controller }) => {
     window.location.reload();
   };
   const onStoreHandler = () => {
-    const flag = window.confirm("추가하시겠습니까?");
-    if (!flag) {
-      return;
-    }
-
     if (imgFileUrl && name) {
-      const authAxios = Axios.create({
-        headers: {
-          Authorization: "Bearer " + token,
-          "content-type": "multipart/form-data",
-        },
-      });
+      const flag = window.confirm("추가하시겠습니까?");
+      if (!flag) {
+        return;
+      }
+      const nextUrl = "/stack";
       const formData = new FormData();
       formData.append("title", name);
       formData.append("img_url", imgFile);
       formData.append("skillful", skillful);
       formData.append("frequency", frequency);
       formData.append("color", color);
-
-      const options = {
-        method: "post",
-        url,
-        data: formData,
-      };
-      authAxios(options)
-        .then((data) => {
-          if (data && data.status === 200) {
-            const { msg } = data.data;
-            alert(msg);
-            closeModal();
-          }
-        })
-        .catch((error) => {
-          if (error.response) {
-            const {
-              status,
-              data: { message },
-            } = error.response;
-
-            return status === 401
-              ? alert(message)
-              : status === 422
-              ? alert("이미 등록되었거나, 잘못된 값을 입력하였습니다.")
-              : status === 500
-              ? alert("서버로부터 응답이 올바르지 않습니다.")
-              : alert("등록에 실패하였습니다.");
-          }
-        });
+      RequestImgUpload({ url, nextUrl, formData });
+    } else {
+      alert("모두 입력하였는지 확인해주세요.");
       return;
     }
-    alert("모두 입력하였는지 확인해주세요.");
-    return;
   };
 
   return (

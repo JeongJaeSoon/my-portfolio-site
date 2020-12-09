@@ -1,51 +1,21 @@
 import React from "react";
-import Axios from "axios";
+import { RequestDelete } from "../../axios";
 import { urls } from "../../config";
 
 import "./Item.css";
 
 const StackItem = ({ stack, dataKey }) => {
   const url = urls.stack.delete + dataKey;
-  const token = localStorage.getItem("token");
   const { title, stackImg, color, skillful, frequency } = stack;
   const onDeleteHandler = () => {
+    const nextUrl = "/stack";
     const flag = window.confirm("삭제하시겠습니까?");
     if (!flag) {
       return;
     }
-
-    const authAxios = Axios.create({
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
-    const options = {
-      method: "delete",
-      url,
-    };
-    authAxios(options)
-      .then((data) => {
-        if (data && data.status === 200) {
-          const { msg } = data.data;
-          alert(msg);
-          window.location.href = "/stack";
-        }
-      })
-      .catch((error) => {
-        if (error.response) {
-          const {
-            status,
-            data: { message },
-          } = error.response;
-
-          return status === 401
-            ? alert(message)
-            : alert("삭제에 실패하였습니다.");
-        }
-        return;
-      });
-    return;
+    RequestDelete({ url, nextUrl });
   };
+
   return (
     <div className="item">
       <div className="top">
