@@ -6,6 +6,12 @@
   margin: 10px;
   border-radius: 30px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.stacks .item:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
 }
 
 .stacks .item > div {

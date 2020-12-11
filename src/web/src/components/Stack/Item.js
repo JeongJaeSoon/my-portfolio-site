@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { useClick } from "../../hooks";
 import { RequestDelete } from "../../axios";
+import { RelatedProject } from "../Modal";
 import { urls } from "../../config";
 
 import "./Item.css";
 
 const StackItem = ({ stack, dataKey }) => {
   const url = urls.stack.delete + dataKey;
+  const token = localStorage.getItem("token");
   const { title, stackImg, color, skillful, frequency } = stack;
+
   const onDeleteHandler = () => {
     const nextUrl = "/stack";
     const flag = window.confirm("삭제하시겠습니까?");
@@ -16,12 +20,26 @@ const StackItem = ({ stack, dataKey }) => {
     RequestDelete({ url, nextUrl });
   };
 
+  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const openBtn = useClick(() => {
+    setModalIsOpen(true);
+  }, modalIsOpen);
+
   return (
-    <div className="item">
+    <div className="item" ref={openBtn}>
+      <RelatedProject
+        controller={{ modalIsOpen, setModalIsOpen }}
+        info={{ dataKey, title, color }}
+      />
       <div className="top">
-        <div className="delete-btn" onClick={onDeleteHandler}>
-          &#10005;
-        </div>
+        {token ? (
+          <div className="delete-btn" onClick={onDeleteHandler}>
+            &#10005;
+          </div>
+        ) : (
+          ""
+        )}
+
         <div
           className="img"
           style={{

@@ -1,0 +1,54 @@
+.related-project {
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: -1px 1px 20px rgba(0, 0, 0, 0.15);
+}
+
+.related-project .title {
+  border-radius: 10px 10px 0 0;
+  height: 60px;
+  line-height: 60px;
+  font-size: 25px;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.related-project .projects {
+  padding: 15px;
+}
+
+.related-project .projects .wrapper {
+  max-height: 250px;
+  overflow: auto;
+}
+
+.related-project .projects .wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.related-project .projects .wrapper::-webkit-scrollbar-thumb {
+  background-color: #373a44;
+  border-radius: 10px;
+}
+
+.related-project .projects .wrapper::-webkit-scrollbar-track {
+  background-color: #e1e1ea;
+  border-radius: 10px;
+}
+
+.related-project .projects .wrapper .project {
+  border: 1px solid #dfdfdf;
+  font-family: Roboto, sans-serif;
+  width: 95%;
+  height: 40px;
+  line-height: 40px;
+  font-weight: 300;
+  margin: 10px 0;
+}
+
+.related-project .projects .wrapper .project:hover {
+  background-color: red;
+  color: #ffffff;
+  transition: 0.5s;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import { useAxios } from "../../hooks";
 import { urls } from "../../config";
@@ -13,6 +13,7 @@ const StackHome = () => {
   const url = urls.stack.index;
   const token = localStorage.getItem("token");
   const stackData = [];
+
   const { loading, error, data } = useAxios({
     method: "get",
     url,
@@ -42,9 +43,13 @@ const StackHome = () => {
       </>
     );
   }
+
   return (
     <>
       <Title titleName="Tech Stack" />
+      <div className="stack-msg">
+        기술 스택을 클릭 시, 관련 프로젝트 정보를 확인 하실수 있습니다.{" "}
+      </div>
       <div className="stacks">
         {stackData.map((element) => {
           const { id } = element;

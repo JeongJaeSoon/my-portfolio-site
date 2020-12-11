@@ -23,7 +23,6 @@ const customStyles = {
 
 const ModalStack = ({ controller }) => {
   const url = urls.stack.store;
-  const token = localStorage.getItem("token");
   const { modalIsOpen, setModalIsOpen } = controller;
   const skillfulList = ["최상", "상", "중상", "중", "중하"];
   const [name, setName] = useState("");

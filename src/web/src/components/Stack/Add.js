@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useClick } from "../../hooks";
-import StackCreate from "../Modal/StackCreate";
+import {StackCreate} from "../Modal";
 import "./Add.css";
 
 const StackAdd = () => {
