@@ -1,4 +1,4 @@
-const baseURL = "http://www.94soon.net/api";
+const baseURL = "http://laravel.test/api";
 const urls = {
   auth: `${baseURL}/auth`,
   login: `${baseURL}/login`,

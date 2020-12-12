@@ -17,6 +17,7 @@ const ProjectCreate = () => {
   const repoUrl = useInput("");
   const [imgFile, setImgFile] = useState(null);
   const [imgFileUrl, setImgFileUrl] = useState("");
+  const [stackIds, setStackIds] = useState([]);
   const content = useInput("", (value) => {
     return value.length < 87;
   });
@@ -85,7 +86,7 @@ const ProjectCreate = () => {
       repoUrl &&
       imgFile &&
       content &&
-      selectedStack &&
+      stackIds &&
       startDate &&
       endDate &&
       role
@@ -100,10 +101,12 @@ const ProjectCreate = () => {
       formData.append("repo_url", repoUrl);
       formData.append("img_url", imgFile);
       formData.append("content", content);
-      formData.append("stacks", selectedStack);
+      formData.append("stacks", stackIds);
       formData.append("start_date", startDate);
       formData.append("end_date", endDate);
       formData.append("role", role);
+      console.log(stackIds);
+      return;
       RequestCreate({ url: urls.project.store, nextUrl, formData });
     } else {
       alert("모두 입력하였는지 확인해주세요.");
@@ -125,6 +128,7 @@ const ProjectCreate = () => {
       return;
     }
     setSelectedStack(selectedStack.concat(item));
+    setStackIds(stackIds.concat(parseInt(item.id)));
   };
   const removeStackHandler = (event) => {
     const id = event.target.getAttribute("id");
