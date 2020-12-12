@@ -1,5 +1,5 @@
 .project-create {
-  height: 420px;
+  height: 435px;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
@@ -69,13 +69,29 @@
   margin: 10px 0;
 }
 
+.project-create .left .project-content {
+  width: 300px;
+  height: 50px;
+  margin-top: 10px;
+  padding: 10px;
+  resize: unset;
+  outline: none;
+  border: 1px solid #dddddd;
+}
+
+.project-create .left .project-content:focus {
+  box-shadow: 0 0 10px #3773d4;
+  transition: 0.5s;
+}
+
 .project-create .right .project-sub-title {
   font-family: Noto Sans, sans-serif;
   font-size: 30px;
   font-weight: 700;
   font-stretch: normal;
   color: #3773d4;
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 .project-create .right .title,
@@ -147,11 +163,17 @@
 }
 
 .project-create .right .stacks .value .wrapper .stack {
-  border: 1px solid red;
   width: 90%;
-  height: 25px;
-  line-height: 25px;
-  margin: 5px 5px 5px 10px;
+  height: 28px;
+  line-height: 28px;
+  margin: 5px auto;
+  font-family: Roboto, sans-serif;
+}
+
+.project-create .right .stacks .value .wrapper .stack:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
+  cursor: pointer;
 }
 
 .project-create .right .value input,
@@ -193,170 +215,3 @@
   color: #ffffff;
   box-shadow: -1px 1px 20px rgba(0, 0, 0, 0.15);
 }
-
-/* 
-
-
-
-.project-create input,
-.project-create .stack-list,
-.project-create .project-desc {
-  border: 1px solid #dcdcdc;
-  border-radius: 100px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
-}
-
-.project-create .img-upload-btn {
-  box-sizing: border-box;
-  width: 180px;
-  height: 180px;
-  margin: 30px auto;
-  border-radius: 20px;
-  position: relative;
-  cursor: pointer;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
-}
-
-.project-create .img-upload-btn:hover {
-  box-shadow: 0 0 10px 0 #3773d4;
-  transition: 0.5s;
-}
-
-.project-create .img-upload-btn .wrapper {
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.project-create .img-upload-btn .fas,
-.project-create .img-upload-btn span {
-  display: block;
-  margin: 15px 0;
-}
-
-.project-create .img-upload-btn .fas {
-  font-size: 40px;
-  color: #3773d4;
-}
-
-.project-create .img-upload-btn span {
-  font-family: Noto Sans, sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  color: #213e3b;
-}
-
-.project-create .project-info {
-  margin-top: 50px;
-}
-
-.project-create .project-info > div {
-  box-sizing: border-box;
-  width: 50%;
-  float: left;
-  height: 180px;
-}
-
-.project-create .project-info .left li {
-  height: 55px;
-  overflow: hidden;
-}
-
-.project-create .project-info .left li > div {
-  float: left;
-}
-
-.project-create .project-info .left li .title {
-  width: 30%;
-  font-family: Noto Sans, sans-serif;
-  font-size: 23px;
-  font-weight: 700;
-  font-stretch: normal;
-  line-height: 1.4;
-  color: #3773d4;
-}
-
-.project-create .project-info .left .stack-list {
-  width: 280px;
-  height: 30px;
-  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.16);
-  overflow: auto;
-}
-
-.project-create .project-info .left .stack-item {
-  display: inline-block;
-  width: 100px;
-  height: 25px;
-  line-height: 30px;
-  background-color: #3773d4;
-  border-radius: 10px;
-  margin: 3px 5px;
-  color: white;
-}
-
-.project-create .project-info .left .stack-item p,
-.project-create .project-info .left .stack-item .fas {
-  display: inline-block;
-}
-
-.project-create .project-info .left .stack-item .fas {
-  margin-left: 10px;
-}
-
-.project-create .project-info .left .stack-add-btn {
-  width: 70px;
-  height: 30px;
-  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.16);
-  outline: none;
-  border-radius: 5px;
-  color: #3773d4;
-  background-color: #ffffff;
-  border: 1px solid #3773d4;
-  cursor: pointer;
-}
-
-.project-create .project-info .left .stack-add-btn:hover {
-  transition: 0.5s;
-  background-color: #3773d4;
-  color: #ffffff;
-}
-
-
-.project-create .project-info .left .start-date,
-.project-create .project-info .left .end-date {
-  width: 31%;
-  height: 30px;
-  margin: 0 5px;
-  font-family: Roboto, sans-serif;
-}
-
-.project-create .project-info .left .start-date {
-  margin-left: -17px;
-}
-
-.project-create .project-info .left .role input {
-  width: 390px;
-  height: 30px;
-  margin-left: -7px;
-  font-family: Noto Sans, sans-serif;
-}
-
-.project-create .project-info .right .project-desc {
-  box-sizing: border-box;
-  width: 450px;
-  height: 150px;
-  line-height: 3;
-  resize: none;
-  border-radius: 10px;
-  font-family: Noto Sans, sans-serif;
-  padding: 20px;
-  outline: none;
-}
-
-.project-create .project-info .right .project-desc:focus {
-  border: 1px solid#547ef2;
-  transition: 0.5s;
-}
- */

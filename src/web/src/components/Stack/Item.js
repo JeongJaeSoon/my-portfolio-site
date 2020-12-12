@@ -7,7 +7,7 @@ import { urls } from "../../config";
 import "./Item.css";
 
 const StackItem = ({ stack, dataKey }) => {
-  const url = urls.stack.delete + dataKey;
+  const url = urls.stack.delete + `/${dataKey}`;
   const token = localStorage.getItem("token");
   const { title, stackImg, color, skillful, frequency } = stack;
 
@@ -21,7 +21,11 @@ const StackItem = ({ stack, dataKey }) => {
   };
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const openBtn = useClick(() => {
+  const openBtn = useClick(({ target }) => {
+    if (target.classList[0] === "delete-btn") {
+      return;
+    }
+
     setModalIsOpen(true);
   }, modalIsOpen);
 
@@ -43,7 +47,8 @@ const StackItem = ({ stack, dataKey }) => {
         <div
           className="img"
           style={{
-            background: `url(${stackImg}) center/contain no-repeat`,
+            background: `url(${stackImg}) center no-repeat`,
+            backgroundSize: "contain",
           }}
         ></div>
         <div className="value">

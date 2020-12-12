@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import imageCompression from "browser-image-compression";
-import { RequestImgUpload } from "../../axios";
+import { RequestCreate } from "../../axios";
 import { urls } from "../../config";
 
 import "./StackCreate.css";
@@ -72,7 +72,7 @@ const ModalStack = ({ controller }) => {
     window.location.reload();
   };
   const onStoreHandler = () => {
-    if (imgFileUrl && name) {
+    if (imgFile && name) {
       const flag = window.confirm("추가하시겠습니까?");
       if (!flag) {
         return;
@@ -84,7 +84,7 @@ const ModalStack = ({ controller }) => {
       formData.append("skillful", skillful);
       formData.append("frequency", frequency);
       formData.append("color", color);
-      RequestImgUpload({ url, nextUrl, formData });
+      RequestCreate({ url, nextUrl, formData });
     } else {
       alert("모두 입력하였는지 확인해주세요.");
       return;

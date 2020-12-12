@@ -6,7 +6,7 @@ import { urls } from "../../config";
 
 const ProjectView = ({ projectId }) => {
   const [id, setId] = useState(projectId);
-  const url = urls.project.show + id;
+  const url = urls.project.show + `/${id}`;
   const token = localStorage.getItem("token");
 
   if (projectId !== id) {

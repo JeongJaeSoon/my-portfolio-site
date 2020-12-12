@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const RequestImgUpload = ({ url, nextUrl, formData }) => {
+const RequestCreate = ({ url, nextUrl, formData }) => {
   const token = localStorage.getItem("token");
   if (!token) {
     return;
@@ -47,4 +47,4 @@ const RequestImgUpload = ({ url, nextUrl, formData }) => {
   return false;
 };
 
-export default RequestImgUpload;
+export default RequestCreate;

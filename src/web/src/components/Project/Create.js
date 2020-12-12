@@ -1,38 +1,40 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import imageCompression from "browser-image-compression";
-import { useAuth } from "../../hooks";
-import { StackList } from "../Modal";
+import { useAuth, useInput } from "../../hooks";
 import { urls } from "../../config";
 import Title from "../Util/Title";
 
 import "./Create.css";
+import { RequestCreate } from "../../axios";
 
 const ProjectCreate = () => {
   const url = urls.stack.list;
   const token = localStorage.getItem("token");
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const stacks = [];
+  // const [title, setTitle] = useState("");
+  const title = useInput("");
+  const repoUrl = useInput("");
   const [imgFile, setImgFile] = useState(null);
   const [imgFileUrl, setImgFileUrl] = useState("");
-  const stacks = [];
-  const onChangeImg = async ({ target }) => {
-    const file = target.files[0];
-    const options = {
-      maxSizeMB: 2,
-      maxWidthOrHeight: 150,
-    };
-
-    try {
-      const compressedImgFile = await imageCompression(file, options);
-      setImgFile(file);
-      const promise = imageCompression.getDataUrlFromFile(compressedImgFile);
-      promise.then((result) => {
-        setImgFileUrl(result);
-      });
-    } catch (error) {
-      alert(error);
+  const content = useInput("", (value) => {
+    return value.length < 87;
+  });
+  const [selectedStack, setSelectedStack] = useState([]);
+  const startDate = useInput("", (date) => {
+    if (!endDate.value) {
+      return true;
     }
-  };
+    return endDate.value > date;
+  });
+  const endDate = useInput("", (date) => {
+    if (!startDate.value) {
+      return true;
+    }
+    return startDate.value < date;
+  });
+  const role = useInput("");
+
   const { data, error } = useAuth(
     {
       method: "get",
@@ -48,13 +50,90 @@ const ProjectCreate = () => {
   if (data) {
     const { stackList } = data.data;
     stackList.map((element) => {
-      stacks.push({
-        id: element.id,
-        title: element.title,
-        color: element.color,
-      });
+      stacks.push(element);
     });
   }
+
+  const onChangeImg = async ({ target }) => {
+    const file = target.files[0];
+    const options = {
+      maxSizeMB: 2,
+      maxWidthOrHeight: 150,
+    };
+    try {
+      const compressedImgFile = await imageCompression(file, options);
+      setImgFile(file);
+      const promise = imageCompression.getDataUrlFromFile(compressedImgFile);
+      promise.then((result) => {
+        setImgFileUrl(result);
+      });
+    } catch (error) {
+      alert(error);
+    }
+  };
+  const onAddMouseEnterHandler = (event) => {
+    event.target.style.backgroundColor = event.target.style.borderColor;
+    event.target.style.color = "#ffffff";
+  };
+  const onAddMouseLeaveHandler = (event) => {
+    event.target.style.color = event.target.style.backgroundColor;
+    event.target.style.backgroundColor = "initial";
+  };
+  const onStoreHandler = () => {
+    if (
+      title &&
+      repoUrl &&
+      imgFile &&
+      content &&
+      selectedStack &&
+      startDate &&
+      endDate &&
+      role
+    ) {
+      const flag = window.confirm("생성하시겠습니까?");
+      if (!flag) {
+        return;
+      }
+      const nextUrl = "/project";
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("repo_url", repoUrl);
+      formData.append("img_url", imgFile);
+      formData.append("content", content);
+      formData.append("stacks", selectedStack);
+      formData.append("start_date", startDate);
+      formData.append("end_date", endDate);
+      formData.append("role", role);
+      RequestCreate({ url: urls.project.store, nextUrl, formData });
+    } else {
+      alert("모두 입력하였는지 확인해주세요.");
+      return;
+    }
+  };
+  const onAddStackHandler = (event) => {
+    const item = {
+      id: event.target.getAttribute("id"),
+      title: event.target.getAttribute("title"),
+      color: event.target.getAttribute("color"),
+    };
+
+    const found = selectedStack.find((element) => {
+      return element.id === item.id;
+    });
+
+    if (found) {
+      return;
+    }
+    setSelectedStack(selectedStack.concat(item));
+  };
+  const removeStackHandler = (event) => {
+    const id = event.target.getAttribute("id");
+    const tmpSeletedStack = selectedStack.filter((element) => {
+      return element.id !== id;
+    });
+
+    setSelectedStack(tmpSeletedStack);
+  };
 
   return (
     <>
@@ -64,16 +143,20 @@ const ProjectCreate = () => {
           <div className="project-create">
             <div className="left">
               <div className="project-title">
-                <input type="text" placeholder="프로젝트 명" />
-                <input type="url" placeholder="GitHub Repository 주소" />
+                <input type="text" placeholder="프로젝트 명" {...title} />
+                <input
+                  type="url"
+                  placeholder="GitHub Repository 주소"
+                  {...repoUrl}
+                />
               </div>
               <div className="project-img">
                 <div
                   className="img-show"
                   style={{
-                    width: "200px",
-                    height: "200px",
-                    background: `url(${imgFileUrl}) center/200px no-repeat`,
+                    width: "180px",
+                    height: "180px",
+                    background: `url(${imgFileUrl}) center/180px no-repeat`,
                   }}
                 ></div>
                 <input
@@ -84,10 +167,9 @@ const ProjectCreate = () => {
                 />
               </div>
               <textarea
-                cols="27"
-                rows="3"
-                className="project-desc"
+                className="project-content"
                 placeholder="프로젝트 소개글을 작성하세요"
+                {...content}
               ></textarea>
             </div>
             <div className="right">
@@ -98,31 +180,47 @@ const ProjectCreate = () => {
                   <div className="value">
                     <div className="wrapper">
                       <ul className="stack-selected">
-                        <li className="stack">a</li>
-                        <li className="stack">b</li>
-                        <li className="stack">c</li>
-                        <li className="stack">d</li>
-                        <li className="stack">a</li>
-                        <li className="stack">b</li>
-                        <li className="stack">c</li>
-                        <li className="stack">d</li>
+                        {selectedStack.map((element) => {
+                          return (
+                            <li
+                              className="stack"
+                              key={element.id}
+                              style={{
+                                backgroundColor: element.color,
+                                color: "#ffffff",
+                              }}
+                              id={element.id}
+                              onClick={removeStackHandler}
+                            >
+                              {element.title}
+                            </li>
+                          );
+                        })}
                       </ul>
                       <div className="txt">사용 기술</div>
                     </div>
                     <div className="wrapper">
                       <ul className="stack-list">
-                        <li className="stack">a</li>
-                        <li className="stack">b</li>
-                        <li className="stack">c</li>
-                        <li className="stack">d</li>
-                        <li className="stack">a</li>
-                        <li className="stack">b</li>
-                        <li className="stack">c</li>
-                        <li className="stack">d</li>
-                        <li className="stack">a</li>
-                        <li className="stack">b</li>
-                        <li className="stack">c</li>
-                        <li className="stack">d</li>
+                        {stacks.map((element) => {
+                          return (
+                            <li
+                              className="stack"
+                              key={element.id}
+                              style={{
+                                border: `1px solid ${element.color}`,
+                                color: element.color,
+                              }}
+                              id={element.id}
+                              title={element.title}
+                              color={element.color}
+                              onMouseEnter={onAddMouseEnterHandler}
+                              onMouseLeave={onAddMouseLeaveHandler}
+                              onClick={onAddStackHandler}
+                            >
+                              {element.title}
+                            </li>
+                          );
+                        })}
                       </ul>
                       <div className="txt">기술 목록</div>
                     </div>
@@ -131,9 +229,9 @@ const ProjectCreate = () => {
                 <li className="date">
                   <div className="title">개발 기간</div>
                   <div className="value">
-                    <input type="date" className="start-date" />
+                    <input type="date" className="start-date" {...startDate} />
                     <p>~</p>
-                    <input type="date" className="end-date" />
+                    <input type="date" className="end-date" {...endDate} />
                   </div>
                 </li>
                 <li className="role">
@@ -141,68 +239,18 @@ const ProjectCreate = () => {
                   <div className="value">
                     <input
                       type="text"
-                      placeholder="20자 이내로 작성하세요."
-                      maxLength="20"
+                      placeholder="21자 이내로 작성하세요."
+                      maxLength="21"
+                      {...role}
                     />
                   </div>
                 </li>
               </ul>
             </div>
-            {/* 
-            <div className="img-upload-btn">
-              <div className="wrapper">
-                <i className="fas fa-image" />
-                <span>프로젝트 사진 업로드</span>
-              </div>
-            </div>
-            <div className="project-info">
-              <div className="left">
-                <ul>
-                  <li className="stack">
-                    <div className="title">기술 스택</div>
-                    <div className="stack-list">
-                      {selectedStacks.map((element) => {
-                        console.log(element);
-                        return (
-                          // <div className="stack-item" key={element.id}>
-                          <p className="name" key={element.id}>
-                            {element.title}
-                          </p>
-                          // <i className="fas fa-times-circle"></i>
-                          // </div>
-                        );
-                      })}
-                    </div>
-                    <StackList
-                      controller={{ modalIsOpen, setModalIsOpen }}
-                      stacks={stacks}
-                      selectedStacks={selectedStacks}
-                    />
-                    <button className="stack-add-btn" ref={listBtn}>
-                      추가
-                    </button>
-                  </li>
-                  <li className="date">
-                    <div className="title">개발 기간</div>
-                    <input type="date" className="start-date" />
-                    ~
-                    <input type="date" className="end-date" />
-                  </li>
-                  <li className="role">
-                    <div className="title">담당 역할</div>
-                    <input
-                      type="text"
-                      placeholder="20자 이내로 작성하세요."
-                      maxLength="20"
-                    />
-                  </li>
-                </ul>
-              </div>
-              <div className="right">
-              </div>
-            </div> */}
           </div>
-          <button className="create-btn">저장</button>
+          <button className="create-btn" onClick={onStoreHandler}>
+            저장
+          </button>
         </>
       ) : (
         <Redirect path="*" to="/project" />

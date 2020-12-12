@@ -5,7 +5,8 @@ const urls = {
   logout: `${baseURL}/logout`,
   project: {
     index: `${baseURL}/project`,
-    show: `${baseURL}/project/`,
+    show: `${baseURL}/project`,
+    store: `${baseURL}/project`,
   },
   stack: {
     index: `${baseURL}/stack`,
