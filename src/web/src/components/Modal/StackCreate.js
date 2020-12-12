@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Axios from "axios";
 import Modal from "react-modal";
 import imageCompression from "browser-image-compression";
 import { RequestImgUpload } from "../../axios";

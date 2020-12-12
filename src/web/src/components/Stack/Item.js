@@ -20,7 +20,7 @@ const StackItem = ({ stack, dataKey }) => {
     RequestDelete({ url, nextUrl });
   };
 
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const openBtn = useClick(() => {
     setModalIsOpen(true);
   }, modalIsOpen);

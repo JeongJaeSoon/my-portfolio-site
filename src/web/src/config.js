@@ -9,8 +9,9 @@ const urls = {
   },
   stack: {
     index: `${baseURL}/stack`,
+    list: `${baseURL}/stack/list`,
     store: `${baseURL}/stack`,
-    delete: `${baseURL}/stack/`,
+    delete: `${baseURL}/stack`,
   },
 };
 

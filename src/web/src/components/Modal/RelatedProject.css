@@ -48,7 +48,8 @@
 }
 
 .related-project .projects .wrapper .project:hover {
-  background-color: red;
+  /* background-color: red; */
   color: #ffffff;
   transition: 0.5s;
+  font-weight: 400;
 }
