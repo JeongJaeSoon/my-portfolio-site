@@ -31,10 +31,15 @@ const StackItem = ({ stack, stackId }) => {
 
   return (
     <div className="item" ref={openBtn}>
-      <RelatedProject
-        controller={{ modalIsOpen, setModalIsOpen }}
-        info={{ stackId, title, color }}
-      />
+      {modalIsOpen ? (
+        <RelatedProject
+          controller={{ modalIsOpen, setModalIsOpen }}
+          info={{ stackId, title, color }}
+        />
+      ) : (
+        ""
+      )}
+
       <div className="top">
         {token ? (
           <div className="delete-btn" onClick={onDeleteHandler}>

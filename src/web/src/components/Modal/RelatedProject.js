@@ -56,28 +56,29 @@ const RelatedProject = ({ controller, info }) => {
   const onMouseLeaveHandler = (event) => {
     event.target.style.backgroundColor = "initial";
   };
-  const relatedProjectNotExists = () => {
-    alert("선택하신 기술스택으로 참가한 프로젝트가 없습니다.");
-    closeModal();
-    return;
+  const dataNotExistsHandler = () => {
+    if (data) {
+      alert("선택하신 기술 스택으로 참가한 프로젝트가 없습니다.");
+      closeModal();
+    }
   };
 
   return (
-    <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      style={customStyles}
-      contentLabel="Related Project"
-    >
-      <div className="related-project">
-        <div className="title" style={{ backgroundColor: color }}>
-          {title}
-        </div>
-        <div className="projects">
-          <div className="wrapper">
-            {relatedProjects.length === 0
-              ? relatedProjectNotExists()
-              : relatedProjects.map((element) => {
+    <>
+      {relatedProjects.length !== 0 ? (
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Related Project"
+        >
+          <div className="related-project">
+            <div className="title" style={{ backgroundColor: color }}>
+              {title}
+            </div>
+            <div className="projects">
+              <div className="wrapper">
+                {relatedProjects.map((element) => {
                   return (
                     <Link
                       to={`project/${element.id}`}
@@ -90,11 +91,18 @@ const RelatedProject = ({ controller, info }) => {
                     </Link>
                   );
                 })}
-            {}
+                {}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </Modal>
+        </Modal>
+      ) : (
+        dataNotExistsHandler()
+        // data &&
+        // alert("선택하신 기술 스택으로 참가한 프로젝트가 없습니다.") &&
+        // setModalIsOpen(false)
+      )}
+    </>
   );
 };
 
