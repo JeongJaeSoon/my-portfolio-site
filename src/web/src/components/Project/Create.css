@@ -77,6 +77,7 @@
   resize: unset;
   outline: none;
   border: 1px solid #dddddd;
+  font-weight: 300;
 }
 
 .project-create .left .project-content:focus {

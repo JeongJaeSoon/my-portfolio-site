@@ -12,7 +12,7 @@ const ProjectCreate = () => {
   const url = urls.stack.list;
   const token = localStorage.getItem("token");
   const stacks = [];
-  // const [title, setTitle] = useState("");
+
   const title = useInput("");
   const repoUrl = useInput("");
   const [imgFile, setImgFile] = useState(null);
@@ -82,14 +82,14 @@ const ProjectCreate = () => {
   };
   const onStoreHandler = () => {
     if (
-      title &&
-      repoUrl &&
+      title.value &&
+      repoUrl.value &&
       imgFile &&
-      content &&
+      content.value &&
       stackIds &&
-      startDate &&
-      endDate &&
-      role
+      startDate.value &&
+      endDate.value &&
+      role.value
     ) {
       const flag = window.confirm("생성하시겠습니까?");
       if (!flag) {
@@ -97,16 +97,17 @@ const ProjectCreate = () => {
       }
       const nextUrl = "/project";
       const formData = new FormData();
-      formData.append("title", title);
-      formData.append("repo_url", repoUrl);
+      formData.append("title", title.value);
+      formData.append("repo_url", repoUrl.value);
       formData.append("img_url", imgFile);
-      formData.append("content", content);
-      formData.append("stacks", stackIds);
-      formData.append("start_date", startDate);
-      formData.append("end_date", endDate);
-      formData.append("role", role);
-      console.log(stackIds);
-      return;
+      formData.append("content", content.value);
+      stacks.forEach((item) => {
+        formData.append("stacks[]", item.id);
+      });
+      // formData.append("stacks", JSON.stringify(stackIds));
+      formData.append("start_date", startDate.value);
+      formData.append("end_date", endDate.value);
+      formData.append("role", role.value);
       RequestCreate({ url: urls.project.store, nextUrl, formData });
     } else {
       alert("모두 입력하였는지 확인해주세요.");

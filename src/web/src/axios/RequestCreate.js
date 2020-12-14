@@ -34,6 +34,7 @@ const RequestCreate = ({ url, nextUrl, formData }) => {
           data: { message },
         } = error.response;
 
+        console.log(error.response.data);
         return status === 401
           ? alert(message)
           : status === 422
