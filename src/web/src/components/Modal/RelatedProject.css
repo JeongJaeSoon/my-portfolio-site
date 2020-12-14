@@ -38,6 +38,7 @@
 }
 
 .related-project .projects .wrapper .project {
+  display: inline-block;
   border: 1px solid #dfdfdf;
   font-family: Roboto, sans-serif;
   width: 95%;
@@ -45,6 +46,7 @@
   line-height: 40px;
   font-weight: 300;
   margin: 10px 0;
+  color: #828282;
 }
 
 .related-project .projects .wrapper .project:hover {

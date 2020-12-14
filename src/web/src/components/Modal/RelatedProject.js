@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { urls } from "../../config";
 import { useAxios } from "../../hooks";
 import Modal from "react-modal";
@@ -79,14 +79,15 @@ const RelatedProject = ({ controller, info }) => {
               ? relatedProjectNotExists()
               : relatedProjects.map((element) => {
                   return (
-                    <div
+                    <Link
+                      to={`project/${element.id}`}
                       key={element.id}
                       className="project"
                       onMouseEnter={onMouseEnterHandler}
                       onMouseLeave={onMouseLeaveHandler}
                     >
                       {element.title}
-                    </div>
+                    </Link>
                   );
                 })}
             {}

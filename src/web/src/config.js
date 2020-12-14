@@ -1,7 +1,7 @@
 const devURL = "http://laravel.test/api";
 const dplURL = "http://www.94soon.net/api";
 
-const baseURL = dplURL;
+const baseURL = devURL;
 
 const urls = {
   auth: `${baseURL}/auth`,
