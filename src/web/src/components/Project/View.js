@@ -68,7 +68,6 @@ const ProjectView = ({ projectId }) => {
   }
 
   const {
-    // id,
     title,
     repo_url,
     img_url,
