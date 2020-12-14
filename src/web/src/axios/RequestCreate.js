@@ -20,7 +20,7 @@ const RequestCreate = ({ url, nextUrl, formData }) => {
 
   authAxios(options)
     .then((data) => {
-      if (data && data.status === 200) {
+      if (data && data.status === 201) {
         const { msg } = data.data;
         alert(msg);
         window.location.href = nextUrl;

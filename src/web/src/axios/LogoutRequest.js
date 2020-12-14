@@ -15,7 +15,7 @@ const LogoutRequest = () => {
     url,
   })
     .then((data) => {
-      if (data && data.status === 200) {
+      if (data && data.status === 201) {
         const { message } = data.data;
         alert(message);
         return;

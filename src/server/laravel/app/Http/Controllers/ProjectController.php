@@ -34,7 +34,7 @@ class ProjectController extends Controller
     {
         return response([
             "projects" => $this->project->index()
-        ]);
+        ], 200);
     }
 
     /**
@@ -98,10 +98,10 @@ class ProjectController extends Controller
             response([
                 'msg' => '프로젝트 등록에 성공하였습니다.',
                 'result' => $result
-            ]) :
+            ], 201) :
             response([
                 'msg' => '프로젝트 등록에 실패하였습니다.'
-            ]);
+            ], 400);
     }
 
     /**
@@ -114,7 +114,7 @@ class ProjectController extends Controller
     {
         return response([
             'project' => $project
-        ]);
+        ], 200);
     }
 
     /**
@@ -153,12 +153,14 @@ class ProjectController extends Controller
             $this->project->remove($project);
         } catch (Exception $exception) {
             return response([
-                'msg' => '삭제에 실패하였습니다.'
-            ]);
+                'msg' => '삭제에 실패하였습니다.',
+                'error' => $exception
+            ], 400);
         }
+
 
         return response([
             'msg' => '삭제에 성공하였습니다.'
-        ]);
+        ], 200);
     }
 }

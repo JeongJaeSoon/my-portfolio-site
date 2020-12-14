@@ -44,7 +44,7 @@ class ApiAuthController extends Controller
         return response([
             "message" => "회원가입에 성공하였습니다.",
             'token' => $token
-        ], 200);
+        ], 201);
     }
 
     /**
@@ -76,7 +76,7 @@ class ApiAuthController extends Controller
                 return response([
                     "message" => "로그인에 성공하였습니다.",
                     'token' => $token
-                ], 200);
+                ], 201);
             }
 
             // 잘못된 password
@@ -112,7 +112,7 @@ class ApiAuthController extends Controller
             return response([
                 'message' => '인증에 성공하였습니다.',
                 'isAuth' => true
-            ], 200);
+            ], 201);
         }
     }
 }

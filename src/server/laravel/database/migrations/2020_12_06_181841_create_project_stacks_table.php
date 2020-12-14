@@ -17,8 +17,12 @@ class CreateProjectStacksTable extends Migration
             $table->id();
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('stack_id');
-            $table->foreign('project_id')->references('id')->on('projects');
-            $table->foreign('stack_id')->references('id')->on('stacks');
+            $table->foreign('project_id')
+                ->references('id')->on('projects')
+                ->onDelete('cascade');
+            $table->foreign('stack_id')
+                ->references('id')->on('stacks')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

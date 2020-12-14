@@ -22,7 +22,7 @@ class StackController extends Controller
     {
         return response([
             'stackList' => $this->stack->getList()
-        ]);
+        ], 200);
     }
 
     /**
@@ -41,7 +41,7 @@ class StackController extends Controller
 
         return response([
             'stacks' => $stacks
-        ]);
+        ], 200);
     }
 
     /**
@@ -87,9 +87,10 @@ class StackController extends Controller
             response([
                 'msg' => '기술 스택 등록에 성공하였습니다.',
                 'result' => $result
-            ]) : response([
+            ], 201) :
+            response([
                 'msg' => '기술 스택 등록에 실패하였습니다.'
-            ]);
+            ], 400);
 
     }
 
@@ -140,11 +141,11 @@ class StackController extends Controller
         } catch (Exception $exception) {
             return response([
                 'msg' => '삭제에 실패하였습니다.'
-            ]);
+            ], 400);
         }
 
         return response([
             'msg' => '삭제에 성공하였습니다.'
-        ]);
+        ], 200);
     }
 }

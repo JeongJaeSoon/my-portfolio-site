@@ -12,7 +12,7 @@ const AuthRequest = () => {
     token,
   );
 
-  if (data && data.status === 200) {
+  if (data && data.status === 201) {
     const { isAuth } = data.data;
     return isAuth;
   }
