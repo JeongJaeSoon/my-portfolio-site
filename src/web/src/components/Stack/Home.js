@@ -47,13 +47,19 @@ const StackHome = () => {
   return (
     <>
       <Title titleName="Tech Stack" />
-      <div className="stack-msg">
+      <div
+        className="stack-msg"
+        style={{
+          fontFamily: "Noto sans, sans-serif",
+          fontWeight: 300,
+        }}
+      >
         기술 스택을 클릭 시, 관련 프로젝트 정보를 확인 하실수 있습니다.{" "}
       </div>
       <div className="stacks">
         {stackData.map((element) => {
           const { id } = element;
-          return <Item key={id} dataKey={id} stack={element} />;
+          return <Item key={id} stackId={id} stack={element} />;
         })}
         {token ? <Add /> : ""}
       </div>

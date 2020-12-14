@@ -102,7 +102,9 @@ class StackController extends Controller
      */
     public function show(Stack $stack)
     {
-        //
+        return response([
+            'projects' => $stack->projects()->get()
+        ], 200);
     }
 
     /**

@@ -1,4 +1,8 @@
-const baseURL = "http://laravel.test/api";
+const devURL = "http://laravel.test/api";
+const dplURL = "http://www.94soon.net/api";
+
+const baseURL = dplURL;
+
 const urls = {
   auth: `${baseURL}/auth`,
   login: `${baseURL}/login`,
@@ -10,6 +14,7 @@ const urls = {
   },
   stack: {
     index: `${baseURL}/stack`,
+    show: `${baseURL}/stack`,
     list: `${baseURL}/stack/list`,
     store: `${baseURL}/stack`,
     delete: `${baseURL}/stack`,

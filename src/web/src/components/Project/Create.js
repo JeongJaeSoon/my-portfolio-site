@@ -101,10 +101,9 @@ const ProjectCreate = () => {
       formData.append("repo_url", repoUrl.value);
       formData.append("img_url", imgFile);
       formData.append("content", content.value);
-      stacks.forEach((item) => {
-        formData.append("stacks[]", item.id);
+      stackIds.forEach((item) => {
+        formData.append("stacks[]", item);
       });
-      // formData.append("stacks", JSON.stringify(stackIds));
       formData.append("start_date", startDate.value);
       formData.append("end_date", endDate.value);
       formData.append("role", role.value);

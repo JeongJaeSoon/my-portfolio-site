@@ -23,7 +23,14 @@ const ProjectView = ({ projectId }) => {
 
   if (!projectId) {
     return (
-      <div className="view" style={{ position: "relative" }}>
+      <div
+        className="view"
+        style={{
+          position: "relative",
+          fontFamily: "Noto sans, sans-serif",
+          fontWeight: 300,
+        }}
+      >
         <p
           style={{
             lineHeight: "10",
@@ -96,9 +103,9 @@ const ProjectView = ({ projectId }) => {
               <Link to="/project/create" className="project-menu">
                 추가
               </Link>
-              <Link to={`/project/modify/${id}`} className="project-menu">
+              {/* <Link to={`/project/modify/${id}`} className="project-menu">
                 수정
-              </Link>
+              </Link> */}
               <div className="project-menu" onClick={onDeleteHandler}>
                 삭제
               </div>

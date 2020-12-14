@@ -1,4 +1,7 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import { urls } from "../../config";
+import { useAxios } from "../../hooks";
 import Modal from "react-modal";
 
 import "./RelatedProject.css";
@@ -20,20 +23,30 @@ const customStyles = {
 
 const RelatedProject = ({ controller, info }) => {
   const { modalIsOpen, setModalIsOpen } = controller;
-  const { dataKey, title, color } = info;
-  // TODO 프로젝트 정보 가져오는것 만들기
-  const projects = [
-    { id: 1, title: "test1" },
-    { id: 2, title: "test2" },
-    { id: 3, title: "test4" },
-    { id: 4, title: "test5" },
-    { id: 5, title: "test6" },
-    { id: 6, title: "test1" },
-    { id: 7, title: "test2" },
-    { id: 8, title: "test4" },
-    { id: 9, title: "test5" },
-    { id: 10, title: "test6" },
-  ];
+  const { stackId, title, color } = info;
+  const url = urls.stack.show + `/${stackId}`;
+  const { data, error } = useAxios({
+    method: "get",
+    url,
+  });
+  const relatedProjects = [];
+
+  if (!modalIsOpen) {
+    return <></>;
+  }
+
+  if (error) {
+    alert("데이터 조회에 실패하였습니다.");
+    return <Redirect path="/stack/*" to="/" />;
+  }
+
+  if (data && data.status === 200) {
+    const { projects } = data.data;
+    projects.map((item) => {
+      relatedProjects.push(item);
+    });
+  }
+
   const closeModal = () => {
     setModalIsOpen(false);
   };
@@ -42,6 +55,11 @@ const RelatedProject = ({ controller, info }) => {
   };
   const onMouseLeaveHandler = (event) => {
     event.target.style.backgroundColor = "initial";
+  };
+  const relatedProjectNotExists = () => {
+    alert("선택하신 기술스택으로 참가한 프로젝트가 없습니다.");
+    closeModal();
+    return;
   };
 
   return (
@@ -57,18 +75,21 @@ const RelatedProject = ({ controller, info }) => {
         </div>
         <div className="projects">
           <div className="wrapper">
-            {projects.map((element) => {
-              return (
-                <div
-                  key={element.id}
-                  className="project"
-                  onMouseEnter={onMouseEnterHandler}
-                  onMouseLeave={onMouseLeaveHandler}
-                >
-                  {element.title}
-                </div>
-              );
-            })}
+            {relatedProjects.length === 0
+              ? relatedProjectNotExists()
+              : relatedProjects.map((element) => {
+                  return (
+                    <div
+                      key={element.id}
+                      className="project"
+                      onMouseEnter={onMouseEnterHandler}
+                      onMouseLeave={onMouseLeaveHandler}
+                    >
+                      {element.title}
+                    </div>
+                  );
+                })}
+            {}
           </div>
         </div>
       </div>

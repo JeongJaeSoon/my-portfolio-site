@@ -6,8 +6,8 @@ import { urls } from "../../config";
 
 import "./Item.css";
 
-const StackItem = ({ stack, dataKey }) => {
-  const url = urls.stack.delete + `/${dataKey}`;
+const StackItem = ({ stack, stackId }) => {
+  const url = urls.stack.delete + `/${stackId}`;
   const token = localStorage.getItem("token");
   const { title, stackImg, color, skillful, frequency } = stack;
 
@@ -33,7 +33,7 @@ const StackItem = ({ stack, dataKey }) => {
     <div className="item" ref={openBtn}>
       <RelatedProject
         controller={{ modalIsOpen, setModalIsOpen }}
-        info={{ dataKey, title, color }}
+        info={{ stackId, title, color }}
       />
       <div className="top">
         {token ? (

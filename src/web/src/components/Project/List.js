@@ -13,6 +13,8 @@ const ProjectList = ({ projects, projectId }) => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
+            fontFamily: "Noto sans, sans-serif",
+            fontWeight: 300,
           }}
         >
           {token ? "프로젝트를 추가해주세요." : "등록된 프로젝트가 없습니다."}

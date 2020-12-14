@@ -135,6 +135,7 @@
 
 .project .view .header .right .project-menu {
   width: 30%;
+  text-align: right;
 }
 
 .project .view .project-menu:hover,
