@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\ProjectStacks;
+use App\Stack;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -13,10 +15,14 @@ use Validator;
 class ProjectController extends Controller
 {
     private $project;
+    private $projectStack;
+    private $imgCnt;
 
     public function __construct()
     {
         $this->project = new Project();
+        $this->projectStack = new ProjectStacks();
+        $this->imgCnt = new ImageController();
     }
 
     /**
@@ -49,11 +55,20 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+//        formData.append("title", title);
+//        formData.append("repo_url", repoUrl);
+//        formData.append("img_url", imgFile);
+//        formData.append("content", content);
+//        formData.append("stacks", stackIds);
+//        formData.append("start_date", startDate);
+//        formData.append("end_date", endDate);
+//        formData.append("role", role);
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:14|unique:projects',
-            'content' => 'required|string|max:90',
             'repo_url' => 'required|string|max:255',
-            'img_url' => 'required|string|max:255',
+            'img_url' => 'required|image|max:5000',
+            'content' => 'required|string|max:90',
+            'stacks' => 'required|array',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
             'role' => 'required|string|max:20'
@@ -65,12 +80,26 @@ class ProjectController extends Controller
             ], 422);
         }
 
-        $result = $this->project->store($request->toArray());
+        // project 저장
+        $result = $this->project->store([
+            'title' => $request->input('title'),
+            'repo_url' => $request->input('repo_url'),
+            'img_url' => $this->imgCnt->saveProjectImg($request->input('title'), $request->file('img_url')),
+            'content' => $request->input('content'),
+            'start_date' => $request->input('start_date'),
+            'end_date' => $request->input('end_date'),
+            'role' => $request->input('role')
+        ]);
+
+        // project 의 stack list 저장
+        $this->projectStack->store($result['id'], $request->input('stacks'));
+
         return $result instanceof \App\Project ?
             response([
                 'msg' => '프로젝트 등록에 성공하였습니다.',
                 'result' => $result
-            ]) : response([
+            ]) :
+            response([
                 'msg' => '프로젝트 등록에 실패하였습니다.'
             ]);
     }

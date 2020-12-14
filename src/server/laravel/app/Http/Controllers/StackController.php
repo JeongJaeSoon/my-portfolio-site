@@ -35,7 +35,7 @@ class StackController extends Controller
         $stacks = $this->stack->index();
 
         $stacks->each(function (&$item) {
-            $stackImg = $this->imgCnt->getStackImg($item['img_url']);
+            $stackImg = $this->imgCnt->getImg($item['img_url']);
             $item['stackImg'] = $stackImg;
         });
 
@@ -78,10 +78,10 @@ class StackController extends Controller
 
         $result = $this->stack->store([
             'title' => $request->input('title'),
+            'img_url' => $this->imgCnt->saveStackImg($request->input('title'), $request->file('img_url')),
             'skillful' => $request->input('skillful'),
             'frequency' => $request->input('frequency'),
             'color' => $request->input('color'),
-            'img_url' => $this->imgCnt->saveStackImg($request->input('title'), $request->file('img_url'))
         ]);
         return $result instanceof \App\Stack ?
             response([
