@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { urls } from "../config";
 import { useClick, useAxios } from "../hooks";
-import { EditAbout } from "../components/Modal";
+import { EditAbout, CareerCreate } from "../components/Modal";
 import "./About.css";
+import { RequestDelete } from "../axios";
 
 const About = () => {
   const value = {
@@ -22,10 +23,15 @@ const About = () => {
   const token = localStorage.getItem("token");
   const url = urls.about.index;
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [aboutModalIsOpen, setAboutModalIsOpen] = useState(false);
+  const [careerModalIsOpen, setCareerModalIsOpen] = useState(false);
+
   const editBtn = useClick(() => {
-    setModalIsOpen(true);
-  }, modalIsOpen);
+    setAboutModalIsOpen(true);
+  }, aboutModalIsOpen);
+  const addBtn = useClick(() => {
+    setCareerModalIsOpen(true);
+  }, careerModalIsOpen);
 
   const { data, error } = useAxios({
     method: "get",
@@ -56,6 +62,17 @@ const About = () => {
     introduce,
   } = value;
 
+  const onDeleteHandler = ({ target }) => {
+    console.log(target.parentNode.value);
+
+    const nextUrl = "/about";
+    const flag = window.confirm("삭제하시겠습니까?");
+    if (!flag) {
+      return;
+    }
+    RequestDelete({ url: urls.about.delete, nextUrl });
+  };
+
   return (
     <div className="about">
       <div className="header">
@@ -68,7 +85,18 @@ const About = () => {
           ""
         )}
 
-        <EditAbout controller={{ modalIsOpen, setModalIsOpen }} />
+        <EditAbout
+          controller={{
+            modalIsOpen: aboutModalIsOpen,
+            setModalIsOpen: setAboutModalIsOpen,
+          }}
+        />
+        <CareerCreate
+          controller={{
+            modalIsOpen: careerModalIsOpen,
+            setModalIsOpen: setCareerModalIsOpen,
+          }}
+        />
         <div className="profile-value">
           <div className="left">
             <div className="main-txt">{main}</div>
@@ -121,17 +149,23 @@ const About = () => {
           </ul>
         </div>
         <div className="career-wrapper">
-          <div className="profile-title">
+          <div className="profile-title" ref={addBtn}>
             경력사항
             {token ? <div className="career-add-btn">&#43;</div> : ""}
           </div>
           <ul className="careers">
-            {career.map((element, index) => {
+            {career.map((element) => {
               return (
-                <li key={index}>
+                <li key={element.id} value={element.id}>
                   <div className="title career-title">{element.date}</div>
                   <div className="value career-value">{element.value}</div>
-                  {token ? <div className="career-del-btn">&#10005;</div> : ""}
+                  {token ? (
+                    <div className="career-del-btn" onClick={onDeleteHandler}>
+                      &#10005;
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </li>
               );
             })}

@@ -17,4 +17,10 @@ class About extends Model
     {
         return self::create($about);
     }
+
+    public function remove(About $about)
+    {
+        return $about->delete($about);
+    }
+
 }

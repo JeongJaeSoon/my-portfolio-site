@@ -39,3 +39,5 @@ Route::apiResource('/stack', 'StackController')->only(['index', 'show']);
 
 Route::get('/about', 'AboutController@index')->name('about.api');
 Route::post('/about', 'AboutController@store')->name('about.api');
+Route::post('/career', 'CareerController@store')->name('about.api');
+Route::delete('/about', 'AboutController@destroy')->name('about.api');

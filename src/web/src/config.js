@@ -20,6 +20,10 @@ const urls = {
   about: {
     index: `${baseURL}/about`,
     store: `${baseURL}/about`,
+    delete: `${baseURL}/about`,
+  },
+  career: {
+    store: `${baseURL}/career`,
   },
 };
 

@@ -1,0 +1,42 @@
+.career-modal input {
+  box-sizing: border-box;
+  height: 30px;
+  margin: 1%;
+  text-align: center;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #dfdfdf;
+  transition: 0.5s;
+}
+
+.career-modal input:focus {
+  border: 1px solid #3773d4;
+}
+
+.career-modal input:nth-child(1) {
+  width: 28%;
+}
+
+.career-modal input:nth-child(2) {
+  width: 68%;
+}
+
+.career-modal button {
+  display: block;
+  margin: 20px auto 0 auto;
+  width: 100px;
+  height: 35px;
+  outline: none;
+  border: none;
+  background-color: #ffffff;
+  border: 1px solid #3773d4;
+  border-radius: 100px;
+}
+
+.career-modal button:hover {
+  background-color: #3773d4;
+  border: none;
+  color: #ffffff;
+  transition: 0.5s;
+}

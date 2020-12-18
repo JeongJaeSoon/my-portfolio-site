@@ -87,4 +87,19 @@ class AboutController extends Controller
                 'msg' => '저장에 실패하였습니다.',
             ], 400);
     }
+
+    public function destroy(About $about)
+    {
+        try {
+            $this->about->remove($about);
+        } catch (Exception $exception) {
+            return response([
+                'msg' => '삭제에 실패하였습니다.'
+            ], 400);
+        }
+
+        return response([
+            'msg' => '삭제에 성공하였습니다.'
+        ], 200);
+    }
 }

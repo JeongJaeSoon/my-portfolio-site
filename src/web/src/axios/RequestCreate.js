@@ -28,7 +28,7 @@ const RequestCreate = ({ url, nextUrl, formData }) => {
       return true;
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.response.data);
       if (error.response) {
         const {
           status,

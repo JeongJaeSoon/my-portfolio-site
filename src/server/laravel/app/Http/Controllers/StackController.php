@@ -91,7 +91,6 @@ class StackController extends Controller
             response([
                 'msg' => '기술 스택 등록에 실패하였습니다.'
             ], 400);
-
     }
 
     /**
