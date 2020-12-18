@@ -33,4 +33,9 @@ class Project extends Model
     {
         return $project->delete($project);
     }
+
+    public function stacks()
+    {
+        return $this->belongsToMany('App\Stack', 'project_stacks');
+    }
 }

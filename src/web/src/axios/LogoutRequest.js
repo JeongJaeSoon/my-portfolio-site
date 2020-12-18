@@ -16,15 +16,15 @@ const LogoutRequest = () => {
   })
     .then((data) => {
       if (data && data.status === 201) {
-        const { message } = data.data;
-        alert(message);
+        const { msg } = data.data;
+        alert(msg);
         return;
       }
     })
     .catch((error) => {
       if (error && error.response && error.response.status === 401) {
-        const { message } = error.response.data;
-        alert(message);
+        const { msg } = error.response.data;
+        alert(msg);
         return;
       }
 

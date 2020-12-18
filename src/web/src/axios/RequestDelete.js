@@ -29,12 +29,10 @@ const RequestDelete = ({ url, nextUrl }) => {
       if (error.response) {
         const {
           status,
-          data: { message },
+          data: { msg },
         } = error.response;
 
-        return status === 401
-          ? alert(message)
-          : alert("삭제에 실패하였습니다.");
+        return status === 401 ? alert(msg) : alert("삭제에 실패하였습니다.");
       }
       return;
     });

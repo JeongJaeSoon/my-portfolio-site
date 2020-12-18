@@ -104,6 +104,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        $project['img_url'] = $this->imgCnt->getImg($project['img_url']);
+        $project['stacks'] = $project->stacks()->get();
+
         return response([
             'project' => $project
         ], 200);

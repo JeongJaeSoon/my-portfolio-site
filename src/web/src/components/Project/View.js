@@ -74,7 +74,7 @@ const ProjectView = ({ projectId }) => {
     start_date,
     end_date,
     role,
-    // stacks,
+    stacks,
   } = data.data.project;
 
   const onDeleteHandler = () => {
@@ -86,7 +86,7 @@ const ProjectView = ({ projectId }) => {
     RequestDelete({ url, nextUrl });
   };
 
-  const stacks = ["aa", "bb", "cc"];
+  // const stacks = ["aa", "bb", "cc"];
   return (
     <div className="view">
       <div className="header">
@@ -115,14 +115,20 @@ const ProjectView = ({ projectId }) => {
         </div>
       </div>
       <div className="section">
-        <div className="img"></div>
+        <div
+          className="img"
+          style={{
+            background: `url(${img_url}) center no-repeat`,
+            backgroundSize: "150px",
+          }}
+        ></div>
         <ul className="info">
           <li>
             <span className="title">기술 스택</span>
             <span className="value">
               {stacks.map((item, index) => {
-                if (index === stacks.length - 1) return item;
-                return item + ", ";
+                if (index === stacks.length - 1) return item.title;
+                return item.title + ", ";
               })}
             </span>
           </li>

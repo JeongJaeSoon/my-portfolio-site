@@ -18,8 +18,8 @@ const AuthRequest = () => {
   }
 
   if (error && error.response && error.response.status === 401) {
-    const { message } = error.response.data;
-    alert(message);
+    const { msg } = error.response.data;
+    alert(msg);
     localStorage.removeItem("token");
     return false;
   }

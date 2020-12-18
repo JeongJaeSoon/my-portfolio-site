@@ -12,8 +12,8 @@ const LoginRequest = ({ email, password, history }) => {
     },
   })
     .then((data) => {
-      const { message, token } = data.data;
-      alert(message);
+      const { msg, token } = data.data;
+      alert(msg);
       localStorage.setItem("token", token);
       history.push("/");
     })
@@ -21,11 +21,11 @@ const LoginRequest = ({ email, password, history }) => {
       if (error.response) {
         const {
           status,
-          data: { message },
+          data: { msg },
         } = error.response;
 
         return status === 401
-          ? alert(message)
+          ? alert(msg)
           : status === 422
           ? alert("잘못된 로그인 정보입니다.")
           : status === 500

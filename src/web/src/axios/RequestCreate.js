@@ -32,11 +32,11 @@ const RequestCreate = ({ url, nextUrl, formData }) => {
       if (error.response) {
         const {
           status,
-          data: { message },
+          data: { msg },
         } = error.response;
 
         return status === 401
-          ? alert(message)
+          ? alert(msg)
           : status === 422
           ? alert("이미 등록되었거나, 잘못된 값을 입력하였습니다.")
           : status === 500
