@@ -1,41 +1,60 @@
 import React, { useState } from "react";
-import { useClick } from "../hooks";
+import { Redirect } from "react-router-dom";
+import { urls } from "../config";
+import { useClick, useAxios } from "../hooks";
 import { EditAbout } from "../components/Modal";
 import "./About.css";
 
 const About = () => {
+  const value = {
+    main: "",
+    region: "",
+    address: {
+      tel: "",
+      email: "",
+      github: "",
+    },
+    career: [],
+    introduce: "",
+  };
+
+  // <<-- -->>
+  const token = localStorage.getItem("token");
+  const url = urls.about.index;
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const editBtn = useClick(() => {
+    setModalIsOpen(true);
+  }, modalIsOpen);
+
+  const { data, error } = useAxios({
+    method: "get",
+    url,
+  });
+
+  if (error) {
+    alert("데이터 조회에 실패하였습니다.");
+    return <Redirect path="/about/*" to="/" />;
+  }
+
+  if (data && data.status === 200) {
+    const { about, career } = data.data;
+    value.main = about.main;
+    value.region = about.region;
+    value.address.tel = about.tel;
+    value.address.email = about.email;
+    value.address.github = about.github;
+    value.career = career;
+    value.introduce = about.introduce;
+  }
+
   const {
     main,
     region,
     address: { tel, email, github },
     career,
     introduce,
-  } = {
-    main: "성장하는",
-    region: "DAEGU",
-    address: {
-      tel: "010-7188-9494",
-      email: "wjdwotns1006@gmail.com",
-      github: "https://github.com/JeongJaeSoon",
-    },
-    career: [
-      { date: "2013.02", value: "경원고등학교 졸업" },
-      { date: "2013.03", value: "영진전문대학교 입학" },
-      { date: "2015.07", value: "육군 하사 임관" },
-      { date: "2019.07", value: "육군 예비역 중사 전역" },
-    ],
-    introduce:
-      "안녕하세요! 영진전문대학교 컴퓨터 정보계열에서 공부 중인 정재순입니다. 제 블로그에 방문해 주셔서 감사합니다. 앞으로 성장하는 개발자가 될 수 있도록 하겠습니다.",
-  };
-
-  // <<-- -->>
-  const token = localStorage.getItem("token");
-  console.log(token);
-
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const editBtn = useClick(() => {
-    setModalIsOpen(true);
-  }, modalIsOpen);
+  } = value;
 
   return (
     <div className="about">
@@ -102,14 +121,17 @@ const About = () => {
           </ul>
         </div>
         <div className="career-wrapper">
-          <div className="profile-title">경력사항</div>
-          <ul>
+          <div className="profile-title">
+            경력사항
+            {token ? <div className="career-add-btn">&#43;</div> : ""}
+          </div>
+          <ul className="careers">
             {career.map((element, index) => {
               return (
                 <li key={index}>
                   <div className="title career-title">{element.date}</div>
                   <div className="value career-value">{element.value}</div>
-                  {token ? <div className="del-btn">&#10005;</div> : ""}
+                  {token ? <div className="career-del-btn">&#10005;</div> : ""}
                 </li>
               );
             })}

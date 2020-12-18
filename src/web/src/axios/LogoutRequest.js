@@ -22,7 +22,6 @@ const LogoutRequest = () => {
       }
     })
     .catch((error) => {
-      console.log(error.response);
       if (error && error.response && error.response.status === 401) {
         const { message } = error.response.data;
         alert(message);

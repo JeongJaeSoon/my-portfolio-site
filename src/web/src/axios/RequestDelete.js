@@ -18,7 +18,6 @@ const RequestDelete = ({ url, nextUrl }) => {
 
   authAxios(options)
     .then((data) => {
-      console.log(data.data);
       if (data && data.status === 200) {
         const { msg } = data.data;
         alert(msg);
@@ -33,7 +32,6 @@ const RequestDelete = ({ url, nextUrl }) => {
           data: { message },
         } = error.response;
 
-        console.log(error.response.data);
         return status === 401
           ? alert(message)
           : alert("삭제에 실패하였습니다.");

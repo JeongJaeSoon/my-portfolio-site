@@ -1,0 +1,64 @@
+.edit-section {
+  margin-top: 30px;
+}
+
+.edit-section .txt {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 300;
+}
+
+.edit-section ul {
+  width: 100%;
+}
+
+.edit-section input,
+.edit-section textarea {
+  font-family: "Noto Sans", sans-serif;
+  border: 1px solid #dfdfdf;
+  outline: none;
+  width: 80%;
+  display: block;
+  margin: 5px auto;
+}
+
+.edit-section input:focus,
+.edit-section textarea:focus {
+  border: 1px solid #3773d4;
+  transition: 0.5s;
+}
+
+.edit-section input {
+  height: 30px;
+  text-align: center;
+  border-radius: 100px;
+}
+
+.edit-section textarea {
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.edit-btn {
+  display: block;
+  margin: 30px auto 0 auto;
+  width: 100px;
+  height: 40px;
+  border-radius: 100px;
+  border: none;
+  border: 1px solid #3773d4;
+  background-color: #ffffff;
+  color: #3773d4;
+  cursor: pointer;
+  outline: none;
+}
+
+.edit-btn:hover {
+  background-color: #3773d4;
+  color: #ffffff;
+  border: none;
+  transition: 0.5s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}

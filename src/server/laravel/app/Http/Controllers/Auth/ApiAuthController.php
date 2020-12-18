@@ -42,7 +42,7 @@ class ApiAuthController extends Controller
 
         $token = $user->createToken('Laravel Password Grant Client')->accessToken;
         return response([
-            "message" => "회원가입에 성공하였습니다.",
+            "msg" => "회원가입에 성공하였습니다.",
             'token' => $token
         ], 201);
     }
@@ -74,20 +74,20 @@ class ApiAuthController extends Controller
             if (Hash::check($request->input('password'), $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
                 return response([
-                    "message" => "로그인에 성공하였습니다.",
+                    "msg" => "로그인에 성공하였습니다.",
                     'token' => $token
                 ], 201);
             }
 
             // 잘못된 password
             return response([
-                "message" => "패스워드가 일치하지 않습니다."
+                "msg" => "패스워드가 일치하지 않습니다."
             ], 401);
         }
 
         // 유저 정보 없을 경우
         return response([
-            "message" => '존재하지 않는 사용자입니다.'
+            "msg" => '존재하지 않는 사용자입니다.'
         ], 401);
     }
 
@@ -102,7 +102,7 @@ class ApiAuthController extends Controller
         $token = $request->user()->token();
         $token->revoke();
         return response([
-            'message' => '로그아웃에 성공하였습니다.'
+            'msg' => '로그아웃에 성공하였습니다.'
         ], 200);
     }
 
@@ -110,7 +110,7 @@ class ApiAuthController extends Controller
     {
         if (Auth::guard('api')->check()) {
             return response([
-                'message' => '인증에 성공하였습니다.',
+                'msg' => '인증에 성공하였습니다.',
                 'isAuth' => true
             ], 201);
         }

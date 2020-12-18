@@ -17,6 +17,10 @@ const urls = {
     store: `${baseURL}/stack`,
     delete: `${baseURL}/stack`,
   },
+  about: {
+    index: `${baseURL}/about`,
+    store: `${baseURL}/about`,
+  },
 };
 
 export { urls };

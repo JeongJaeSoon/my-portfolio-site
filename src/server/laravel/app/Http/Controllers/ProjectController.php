@@ -55,14 +55,6 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-//        formData.append("title", title);
-//        formData.append("repo_url", repoUrl);
-//        formData.append("img_url", imgFile);
-//        formData.append("content", content);
-//        formData.append("stacks", stackIds);
-//        formData.append("start_date", startDate);
-//        formData.append("end_date", endDate);
-//        formData.append("role", role);
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:14|unique:projects',
             'repo_url' => 'required|string|max:255',
@@ -157,7 +149,6 @@ class ProjectController extends Controller
                 'error' => $exception
             ], 400);
         }
-
 
         return response([
             'msg' => '삭제에 성공하였습니다.'

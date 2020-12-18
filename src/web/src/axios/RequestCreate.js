@@ -28,13 +28,13 @@ const RequestCreate = ({ url, nextUrl, formData }) => {
       return true;
     })
     .catch((error) => {
+      console.log(error);
       if (error.response) {
         const {
           status,
           data: { message },
         } = error.response;
 
-        console.log(error.response.data);
         return status === 401
           ? alert(message)
           : status === 422

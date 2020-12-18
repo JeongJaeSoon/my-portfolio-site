@@ -155,18 +155,14 @@
 
 .about .section .career-wrapper li div {
   float: left;
-  /* width: 550px; */
-  /* border: 1px solid red; */
-  /* width: 100%; */
 }
 
 .about .section .career-value {
   width: 50%;
-  /* border: 1px solid red; */
 }
 
-.about .section .del-btn {
-  /* font-size: 15px; */
+.about .section .career-add-btn,
+.about .section .career-del-btn {
   color: #ffffff;
   width: 30px;
   height: 30px;
@@ -174,14 +170,20 @@
   text-align: center;
   border-radius: 100%;
   background-color: #3773d4;
-  /* display: none; */
-
   cursor: pointer;
   background-color: initial;
 }
 
-.about .section .career-value:hover + .del-btn,
-.about .section .del-btn:hover {
+.about .section .career-add-btn {
+  display: inline-block;
+  margin-left: 30px;
+  background-color: #3773d4;
+  line-height: 37px;
+  cursor: pointer;
+}
+
+.about .section .career-value:hover + .career-del-btn,
+.about .section .career-del-btn:hover {
   background-color: #3773d4;
   box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);
   font-size: 15px;
@@ -190,8 +192,30 @@
   height: 30px;
 }
 
-.about .section .del-btn:hover {
+.about .section .career-del-btn:hover {
   transform: scale(1.2);
+}
+
+.about .section .careers {
+  box-sizing: border-box;
+  /* border: 1px solid blueviolet; */
+  height: 200px;
+  overflow: auto;
+  margin-top: -20px;
+}
+
+.about .section .careers::-webkit-scrollbar {
+  width: 6px;
+}
+
+.about .section .careers::-webkit-scrollbar-thumb {
+  background-color: #373a44;
+  border-radius: 10px;
+}
+
+.about .section .careers::-webkit-scrollbar-track {
+  background-color: #e1e1ea;
+  border-radius: 10px;
 }
 
 .about .section .value a {

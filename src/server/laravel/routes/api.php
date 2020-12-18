@@ -36,3 +36,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
 Route::apiResource('/project', 'ProjectController')->only(['index', 'show']);
 Route::apiResource('/stack', 'StackController')->only(['index', 'show']);
+
+Route::get('/about', 'AboutController@index')->name('about.api');
+Route::post('/about', 'AboutController@store')->name('about.api');
