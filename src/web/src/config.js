@@ -1,5 +1,5 @@
-// const baseURL = "http://laravel.test/api";
-const baseURL = "http://www.94soon.net/api";
+const baseURL = "http://localhost:8888/api";
+// const baseURL = "http://www.94soon.net/api";
 
 const urls = {
   auth: `${baseURL}/auth`,

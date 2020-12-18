@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useClick } from "../hooks";
+import { EditAbout } from "../components/Modal";
 import "./About.css";
 
 const About = () => {
@@ -25,10 +27,29 @@ const About = () => {
     introduce:
       "안녕하세요! 영진전문대학교 컴퓨터 정보계열에서 공부 중인 정재순입니다. 제 블로그에 방문해 주셔서 감사합니다. 앞으로 성장하는 개발자가 될 수 있도록 하겠습니다.",
   };
+
+  // <<-- -->>
+  const token = localStorage.getItem("token");
+  console.log(token);
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const editBtn = useClick(() => {
+    setModalIsOpen(true);
+  }, modalIsOpen);
+
   return (
     <div className="about">
       <div className="header">
         <div className="profile-img" />
+        {token ? (
+          <div className="profile-edit" ref={editBtn}>
+            Edit
+          </div>
+        ) : (
+          ""
+        )}
+
+        <EditAbout controller={{ modalIsOpen, setModalIsOpen }} />
         <div className="profile-value">
           <div className="left">
             <div className="main-txt">{main}</div>
@@ -86,8 +107,9 @@ const About = () => {
             {career.map((element, index) => {
               return (
                 <li key={index}>
-                  <div className="title">{element.date}</div>
-                  <div className="value">{element.value}</div>
+                  <div className="title career-title">{element.date}</div>
+                  <div className="value career-value">{element.value}</div>
+                  {token ? <div className="del-btn">&#10005;</div> : ""}
                 </li>
               );
             })}
