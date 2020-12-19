@@ -148,12 +148,16 @@
   margin: 30px auto;
   width: 258px;
   height: 258px;
-  background: url("../../img/gochi-test.jpg") center/258px no-repeat;
+}
+
+.project .view .section .info li {
+  overflow: hidden;
 }
 
 .project .view .section .info li span {
   box-sizing: border-box;
-  display: inline-block;
+  /* display: inline-block; */
+  float: left;
   font-size: 23px;
   line-height: 2;
   height: 46px;
@@ -162,18 +166,24 @@
 .project .view .section .info li .title {
   box-sizing: border-box;
   width: 20%;
-  padding-right: 30px;
+  padding-right: 10px;
   font-family: Noto Sans, sans-serif;
   font-weight: 700;
   color: #3773d4;
   text-align: right;
+  /* border: 1px solid red; */
 }
 
 .project .view .section .info li .value {
-  width: 70%;
+  width: 80%;
   font-weight: 300;
   text-align: left;
   font-family: Roboto, sans-serif;
+  /* border: 1px solid red; */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
 }
 
 .project .view .loading {
