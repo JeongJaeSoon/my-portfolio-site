@@ -119,7 +119,7 @@ const ProjectView = ({ projectId }) => {
           className="img"
           style={{
             background: `url(${img_url}) center no-repeat`,
-            backgroundSize: "150px",
+            backgroundSize: "cover",
           }}
         ></div>
         <ul className="info">
