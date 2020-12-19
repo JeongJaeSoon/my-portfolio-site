@@ -29,7 +29,7 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'main' => 'string|max:10',
+            'main' => 'string|max:20',
             'region' => 'string|max:10',
             'tel' => 'string',
             'email' => 'email',
