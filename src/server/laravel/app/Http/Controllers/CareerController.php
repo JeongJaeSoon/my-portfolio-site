@@ -27,7 +27,7 @@ class CareerController extends Controller
 
         $validator = Validator::make($request->all(), [
             'date' => 'required|string|min:7',
-            'value' => 'required|string|max:15'
+            'value' => 'required|string|max:25'
         ]);
 
         if ($validator->fails()) {
